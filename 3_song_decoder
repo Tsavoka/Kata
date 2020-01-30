@@ -1,0 +1,18 @@
+# Return the words of the initial song that Polycarpus used to make a
+# dubsteb remix. Separate the words with a space.
+
+import re
+
+
+def song_decoder(song):
+    song = song.split('WUB')
+    song = ' '.join(song)
+    song = re.sub(r'\s+', ' ', song)
+    return song.strip()
+
+
+
+
+print(song_decoder("AWUBBWUBC"))
+print(song_decoder("WUBAWUBBWUBCWUB"))
+print(song_decoder("WUBWUBAWUBWUBWUBBWUBWUBWUBC"))
