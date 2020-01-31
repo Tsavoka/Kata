@@ -1,0 +1,17 @@
+# Finish the solution so that it returns the sum of all the multiples of
+# 3 or 5 below the number passed in.
+# If the number is a multiple of both 3 and 5, only count it once.
+
+def solution(number):
+    sum_all = []
+    for i in range(0, number):
+        if i % 3 == 0:
+            sum_all.append(i)
+        elif i % 5 == 0:
+            sum_all.append(i)
+    return sum(sum_all)
+  
+  
+  
+  
+print(solution(10)) # 23
