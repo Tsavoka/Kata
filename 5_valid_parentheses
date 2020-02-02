@@ -1,0 +1,23 @@
+# Write a function called that takes a string of parentheses, and determines
+# if the order of the parentheses is valid. The function should return true
+# if the string is valid, and false if it's invalid.
+
+def valid_parentheses(string):
+    counter = 0
+    for i in string:
+        if i == '(':
+            counter += 1
+        elif i == ")":
+            counter -= 1
+        if counter < 0:
+            return False
+    return counter == 0
+    
+    
+
+
+print(valid_parentheses(""))                # t
+print(valid_parentheses("(())((()())())"))  # t
+print(valid_parentheses("  ("))             # f
+print(valid_parentheses(")test"))           # f
+print(valid_parentheses("hi(hi)()"))        # t
