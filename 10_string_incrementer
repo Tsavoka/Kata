@@ -1,0 +1,32 @@
+# Your job is to write a function which increments a string, to create a
+# new string.
+# If the string already ends with a number, the number should be incremented
+# by 1.
+# If the string does not end with a number. the number 1 should be appended
+# to the new string.
+
+import re
+
+
+def increment_string(strng):
+    num = re.findall(r'\d+$', strng)
+    num = ''.join(num)
+    let = strng[:len(strng)-len(num)]
+    if num == '':
+        return strng + ('1')
+    else:
+        zeros = len(num)
+        num = int(num) + 1
+        let = let + str(num).zfill(zeros)
+        return let
+        
+        
+        
+        
+print(increment_string("foo"))
+print(increment_string("foobar001"))
+print(increment_string("foobar1"))
+print(increment_string("foobar00"))
+print(increment_string("foobar99"))
+print(increment_string("foobar099"))
+print(increment_string(""))        
