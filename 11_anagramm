@@ -1,0 +1,20 @@
+# Write a function that will find all the anagrams of a word from a list.
+
+def anagrams(word, words):
+    result = []
+    word = list(word)
+    word.sort()
+    for i in words:
+        save_word = i
+        i = list(i)
+        i.sort()
+        if i == word:
+            result.append(save_word)
+            
+    return result
+    
+    
+    
+    
+print(anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']))
+print(anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']))
