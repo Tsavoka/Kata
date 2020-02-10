@@ -1,0 +1,15 @@
+# Convert number to reversed array of digits
+
+def digitize(n):
+    n = list(str(n))
+    n = n[::-1]
+    u = []
+    for i in n:
+        i = int(i)
+        u.append(i)
+    return u
+    
+    
+    
+    
+print(digitize(35231)) # [1,3,2,5,3]
