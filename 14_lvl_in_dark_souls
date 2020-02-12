@@ -1,0 +1,58 @@
+# In Dark Souls, players level up trading souls for stats. 8 stats
+# are upgradable this way: vitality, attunement, endurance, strength,
+# dexterity, resistance, intelligence, and faith. Each level corresponds
+# to adding one point to a stat of the player's choice. Also, there
+# are 10 possible classes each having their own starting level and stats.
+# From level 1, the necessary souls to level up each time up to 11
+# are 673, 690, 707, 724, 741, 758, 775, 793, 811, and 829. Then from
+# 11 to 12 and onwards the amount is defined by the expression
+# round(pow(x, 3) * 0.02 + pow(x, 2) * 3.06 + 105.6 * x - 895)
+# where x is the number corresponding to the next level.
+# Your function will receive a string with the character class and a
+# list of stats. It should calculate which level is required to get
+# the desired character build and the amount of souls needed to do so.
+# The result should be a string in the format:
+# 'Starting as a [CLASS], level [N] will require [M] souls.'
+# where [CLASS] is your starting class, [N] is the required level,
+# and [M] is the amount of souls needed respectively.
+
+
+classes = {"warrior":  {"level": 4, "stats": [11, 8, 12, 13, 13, 11, 9, 9]},
+           "knight": {"level": 5, "stats": [14, 10, 10, 11, 11, 10, 9, 11]},
+           "wanderer": {"level": 3, "stats": [10, 11, 10, 10, 14, 12, 11, 8]},
+           "thief": {"level": 5, "stats": [9, 11, 9, 9, 15, 10, 12, 11]},
+           "bandit": {"level": 4, "stats": [12, 8, 14, 14, 9, 11, 8, 10]},
+           "hunter": {"level": 4, "stats": [11, 9, 11, 12, 14, 11, 9, 9]},
+           "sorcerer": {"level": 3, "stats": [8, 15, 8, 9, 11, 8, 15, 8]},
+           "pyromancer": {"level": 1, "stats": [10, 12, 11, 12, 9, 12, 10, 8]},
+           "cleric": {"level": 2, "stats": [11, 11, 9, 12, 8, 11, 8, 14]},
+           "deprived": {"level": 6, "stats": [11, 11, 11, 11, 11, 11, 11, 11]}}
+levels = [673, 690, 707, 724, 741, 758, 775, 793, 811, 829]
+
+def souls(character, build):
+    if character in classes:
+        level = classes[character]["level"]
+        stats = classes[character]["stats"]
+    req_level = level + (sum(build) - sum(stats))
+    if req_level <= 11:
+        req_souls = sum(levels[level-1:req_level-1])
+    else:
+        req_souls = sum(levels[level-1:])
+        for i in range(12, req_level+1):
+            next_lvl = round(pow(i, 3)*0.02 + pow(i, 2)*3.06 + 105.6*i - 895)            
+            req_souls += next_lvl
+    return 'Starting as a {}, level {} will require {} souls.'.format(character,
+                                                                      req_level,
+                                                                      req_souls)
+
+
+
+
+print(souls("pyromancer", [16, 12, 11, 12, 9, 12, 13, 10]))
+# "Starting as a pyromancer, level 12 will require 8348 souls."
+print(souls("deprived", [11, 11, 11, 11, 11, 11, 11, 11]))
+# "Starting as a deprived, level 6 will require 0 souls."
+print(souls("wanderer", [29, 31, 24, 20, 14, 16, 31, 13]))
+# "Starting as a wanderer, level 95 will require 1708140 souls."
+print(souls("bandit", [17, 19, 15, 26, 18, 26, 8, 26]))
+# "Starting as a bandit, level 73 will require 777457 souls."
