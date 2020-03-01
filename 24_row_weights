@@ -1,0 +1,17 @@
+# Several people are standing in a row divided into two teams.
+# The first person goes into team 1, the second goes into team 2, 
+# the third goes into team 1, and so on.
+# Given an array of positive integers, return a new array/tuple 
+# of two integers, where the first one is the total weight of team 1, 
+# and the second one is the total weight of team 2.
+
+def row_weights(array):
+    first_team = array[::2]
+    scnd_team = array[1::2]
+    return sum(first_team), sum(scnd_team)
+
+
+
+
+print(row_weights([100,51,50,100]))               # (150,151)
+print(row_weights([29,83,67,53,19,28,96]))        # (211,164)
