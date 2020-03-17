@@ -1,0 +1,18 @@
+# Complete the solution so that it splits the string into pairs of two
+# characters. If the string contains an odd number of characters then
+# it should replace the missing second character of the final pair with
+# an underscore ('_').
+
+import re
+
+
+def solution(s):
+    return re.findall(r'\w\w', s) if len(s) % 2 == 0 else re.findall(r'\w\w', (s + '_'))
+
+                                                                     
+
+
+print(solution("asdfadsf"))     # ['as', 'df', 'ad', 'sf']
+print(solution("asdfads"))      # ['as', 'df', 'ad', 's_']
+print(solution(""))             # []
+print(solution("x"))            # ["x_"]
