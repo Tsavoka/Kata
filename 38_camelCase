@@ -1,0 +1,20 @@
+# Complete the solution so that the function will break up camel casing, 
+# using a space between words.
+# Ex: solution("camelCasing")  ==  "camel Casing"
+
+import re
+
+
+def solution(s):
+    result = re.split('([A-Z][a-z]+)', s)
+    return ((' '.join(result)).strip()).replace('  ', ' ')
+
+
+
+
+print(solution("helloWorld"))       # "hello World"
+print(solution("camelCase"))        # "camel Case"
+print(solution("breakCamelCase"))   # "break Camel Case"
+
+print(solution("manAdjectivesYearPublicThink"))
+print(solution("manAdjectivesYearPublicThinkAdjectivesYearPublicThink")
