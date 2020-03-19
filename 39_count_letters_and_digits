@@ -1,0 +1,19 @@
+# Bob is a lazy man.
+# He needs you to create a method that can determine how many letters 
+# and digits are in a given string.
+# Ex: "hel2!lo" --> 6
+
+import re
+
+
+def count_letters_and_digits(s):
+    return len(re.findall('[A-Za-z0-9]', s))
+
+
+
+
+print(count_letters_and_digits('n!!ice!!123'))          # 7
+print(count_letters_and_digits('de?=?=tttes!!t'))       # 8
+print(count_letters_and_digits(''))                     # 0
+print(count_letters_and_digits('!@#$%^&`~.'))           # 0
+print(count_letters_and_digits('u_n_d_e_r__S_C_O_R_E')) # 10
