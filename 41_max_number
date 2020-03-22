@@ -1,0 +1,18 @@
+# Given a number , Return _The Maximum number _ could be formed from 
+# the digits of the number given.
+# Only Natural numbers passed to the function , numbers Contain digits 
+# [0:9] inclusive
+# Digit Duplications could occur , So also consider it when forming the 
+# Largest
+
+def max_number(n):
+    return int(''.join(num for num in reversed(sorted(str(n)))))
+    
+    
+    
+    
+print(max_number(213))      # 321
+print(max_number(7389))     # 9873
+print(max_number(63792))    # 97632
+print(max_number(566797))   # 977665
+print(max_number(1000000))  # 1000000   
