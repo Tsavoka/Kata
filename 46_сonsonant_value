@@ -1,0 +1,34 @@
+# Given a lowercase string that has alphabetic characters only and no
+# spaces, return the highest value of consonant substrings. Consonants
+# are any letters of the alphabet except "aeiou".
+# We shall assign the following values: a = 1, b = 2, c = 3, .... z = 26
+
+import re
+from string import ascii_lowercase
+
+
+letters = {letter: num for letter, num in zip(ascii_lowercase, range(1, 27))}
+
+def solve(s):
+    result = []
+    solv_let = re.split(r'[aeiou]+', s)
+    part_sum = 0
+    for part in solv_let:
+        for letter in part:
+            for key in letters.keys():
+                if letter == key:
+                    part_sum += letters[key]
+        result.append(part_sum)
+        part_sum = 0
+    return max(result)
+
+
+
+
+print(solve("zodiac"))              # 26
+print(solve("chruschtschov"))       # 80
+print(solve("khrushchev"))          # 38
+print(solve("strength"))            # 57
+print(solve("catchphrase"))         # 73
+print(solve("twelfthstreet"))       # 103
+print(solve("mischtschenkoana"))    # 80
