@@ -1,0 +1,21 @@
+# Assume "#" is like a backspace in string. This means that string
+# "a#bc#d" actually is "bd"
+# Your task is to process a string with "#" symbols.
+
+def clean_string(s):
+    temp = 0
+    for i in s:
+        temp = s.index(i)
+        if i == '#' and s.index(i) == 0:
+            s = s[temp+1:]
+        elif i == '#':
+            s = s[:temp-1]+s[temp+1:]
+    return s
+
+
+
+
+print(clean_string('abc#d##c'))     # "ac"
+print(clean_string('abc####d##c#')) # "" 
+print(clean_string("#######"))      # "" 
+print(clean_string(""))             # "" 
