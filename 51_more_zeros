@@ -1,0 +1,31 @@
+# Create a moreZeros function which will receive a string for input,
+# and return an array containing only the characters from that string
+# whose binary representation of its ASCII value consists of more zeros
+# than ones.
+# You should remove any duplicate characters, keeping the first
+# occurence of any such duplicates, so they are in the same order in the
+# final array as they first appeared in the input string.
+# All input will be valid strings of length > 0. Leading zeros in binary
+# should not be counted.
+
+
+def more_zeros(s):
+    result = []
+    bs = [f"{ord(i):b}" for i in s]
+    for i in bs:
+        if i.count('0') <= i.count('1'):
+            continue
+        if chr(int(i,2)) in result:
+            continue
+        result.append(chr(int(i,2)))
+    return result
+
+
+
+
+print(more_zeros('abcde'))                                  # ['a', 'b', 'd'])
+print(more_zeros('thequickbrownfoxjumpsoverthelazydog'))    # ['h', 'b', 'p', 'a', 'd'])
+print(more_zeros('THEQUICKBROWNFOXJUMPSOVERTHELAZYDOG'))    # ['T', 'H', 'E', 'Q', 'I', 'C', 'B', 'R', 'F', 'X', 'J', 'P', 'L', 'A', 'D'])
+print(more_zeros('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_'))
+# ['a', 'b', 'd', 'h', 'p', 'A', 'B', 'C', 'D', 'E', 'F', 'H', 'I', 'J', 'L', 'P', 'Q', 'R', 'T', 'X', '0'])
+print(more_zeros('DIGEST')) 
