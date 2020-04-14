@@ -1,0 +1,13 @@
+# Your task is to write a function that takes a string and return a new
+# string with all vowels removed.
+# Note: for this kata y isn't considered a vowel.
+
+import re
+
+def disemvowel(string):
+    return ''.join(re.findall(r'[^aeiouAEIOU]', string))
+
+
+
+
+print(disemvowel("This website is for losers LOL!")) # "Ths wbst s fr lsrs LL!"
