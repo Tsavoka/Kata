@@ -1,0 +1,32 @@
+# Once upon a time, on a way through the old wild mountainous west,…
+# … a man was given directions to go from one point to another. The
+# directions were "NORTH", "SOUTH", "WEST", "EAST". Clearly "NORTH"
+# and "SOUTH" are opposite, "WEST" and "EAST" too.
+# You can immediatly see that going "NORTH" and immediately "SOUTH" is
+# not reasonable, better stay to the same place! So the task is to give
+# to the man a simplified version of the plan.
+# (W<->E or S<->N side by side)
+
+
+NSEW = { "NORTH": "SOUTH",
+         "SOUTH": "NORTH",
+         "EAST": "WEST",
+         "WEST": "EAST" }
+
+
+def dirReduc(arr):
+    for i in range(len(arr) - 1):
+        if arr[i+1] == NSEW.get(arr[i]):
+            arr.pop(i)
+            arr.pop(i)
+            dirReduc(arr)
+            break
+        else:
+            continue
+    return arr
+
+
+a = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
+print(dirReduc(a))  # ['WEST']
+u = ["NORTH", "WEST", "SOUTH", "EAST"]
+print(dirReduc(u))  # ["NORTH", "WEST", "SOUTH", "EAST"]
