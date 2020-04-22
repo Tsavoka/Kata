@@ -1,0 +1,19 @@
+# Implement a function which finds the numbers less than 2, and the indices 
+# of numbers greater than 1 in the given sequence, and returns them as a pair 
+# of sequences.
+# Return a nested array or a tuple depending on the language:
+# The first sequence being only the 1s and 0s from the original sequence.
+# The second sequence being the indexes of the elements greater than 1 in the 
+# original sequence.
+
+def binary_cleaner(seq): 
+    return [num for num in seq if num < 2], [ind for ind, num in enumerate(seq) if num >= 2]
+    
+    
+    
+    
+print(binary_cleaner([0,1,2,1,0,2,1,1,1,0,4,5,6,2,1,1,0]))  # ( [ 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0 ], [ 2, 5, 10, 11, 12, 13 ] )
+print(binary_cleaner([0,1,1,2,0]))                          # ( [ 0, 1, 1, 0 ], [ 3 ] )
+print(binary_cleaner([2,2,0]))                              # ( [ 0 ], [ 0, 1 ] )
+print(binary_cleaner([0,1,2,1,0,2,1,1]))                    # ( [ 0, 1, 1, 0, 1, 1 ], [ 2, 5 ] )
+print(binary_cleaner([1]))                                  # ( [ 1 ], [] )
