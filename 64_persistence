@@ -1,0 +1,25 @@
+# Write a function, persistence, that takes in a positive parameter num
+# and returns its multiplicative persistence, which is the number of
+# times you must multiply the digits in num until you reach a single
+# digit.
+# Ex: persistence(39) => 3  # Because 3*9 = 27, 2*7 = 14, 1*4=4
+                            # and 4 has only one digit.
+
+from functools import reduce
+
+
+def persistence(n):
+    count = 0
+    while len(str(n)) > 1:
+        n = list(map(int, str(n)))
+        n = reduce(lambda x,y: x*y, n)
+        count += 1
+    return count     
+
+
+
+
+print(persistence(39))      # 3
+print(persistence(4))       # 0
+print(persistence(25))      # 2
+print(persistence(999))     # 4
