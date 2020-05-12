@@ -1,0 +1,35 @@
+# Write a function with the signature shown below:
+# def is_int_array(arr):
+#     return True
+# - returns true / True if every element in an array is an integer or
+# a float with no decimals.
+# - returns true / True if array is empty.
+# - returns false / False for every other input.
+
+def is_int_array(arr):
+    try:
+        if type(arr) == list:
+            for i in arr:
+                if i != None and i == int(i):
+                    continue              
+                else:
+                    return False
+            return True
+        return False
+    except:
+        return False
+   
+
+
+
+print(is_int_array([]))                     # True
+print(is_int_array([1, 2, 3, 4]))           # True
+print(is_int_array([-11, -12, -13, -14]))   # True
+print(is_int_array([1.0, 2.0, 3.0]))        # True
+print(is_int_array([1, 2, None]))           # False
+print(is_int_array(None))                   # False
+print(is_int_array(""))                     # False
+print(is_int_array([None]))                 # False
+print(is_int_array([1.0, 2.0, 3.0001]))     # False
+print(is_int_array(["-1"]))                 # False
+print(is_int_array(['poppi', 14, 24]))      # False
