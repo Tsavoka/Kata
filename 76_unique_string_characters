@@ -1,0 +1,16 @@
+# In this Kata, you will be given two strings a and b and your task
+# will be to return the characters that are not common in the two
+# strings.
+# Notice also that you return the characters from the first string
+# concatenated with those from the second string.
+
+def solve(a,b):
+    return ''.join([i for i in a if i not in b] + [i for i in b if i not in a])
+
+
+
+
+print(solve("xyab","xzca"))     # "ybzc"
+print(solve("xyabb","xzca"))    # "ybbzc"
+print(solve("abcd","xyz"))      # "abcdxyz"
+print(solve("xxx","xzca"))      # "zca"
