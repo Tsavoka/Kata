@@ -1,0 +1,22 @@
+# Your task is to Combine two Strings. But consider the rule...
+# By the way you don't have to check errors or incorrect input values,
+# everything is ok without bad tricks, only two input strings and as
+# result one output string;-)...
+# And here's the rule:
+# Input Strings a and b: For every character in string a swap the casing
+# of every occurrence of the same character in string b. Then do the
+# same casing swap with the inputs reversed. Return a single string
+# consisting of the changed version of a followed by the changed version
+# of b. A char of a is in b regardless if it's in upper or lower case -
+# see the testcases too.
+
+def work_on_strings(a,b):
+    return ''.join([let_a.swapcase() if b.lower().count(let_a)%2!=0 or b.upper().count(let_a)%2!=0 else let_a for let_a in a] + [let_b.swapcase() if a.lower().count(let_b)%2!=0 or a.upper().count(let_b)%2!=0 else let_b for let_b in b])
+
+
+
+
+print(work_on_strings("abc","cde"))                     # "abCCde"
+print(work_on_strings("abcdeFgtrzw", "defgGgfhjkwqe"))  # "abcDeFGtrzWDEFGgGFhjkWqE"
+print(work_on_strings("abcdeFg", "defgG"))              # "abcDEfgDEFGg"
+print(work_on_strings("abab", "bababa"))                # "ABABbababa"
