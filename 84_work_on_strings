@@ -11,7 +11,10 @@
 # see the testcases too.
 
 def work_on_strings(a,b):
-    return ''.join([let_a.swapcase() if b.lower().count(let_a)%2!=0 or b.upper().count(let_a)%2!=0 else let_a for let_a in a] + [let_b.swapcase() if a.lower().count(let_b)%2!=0 or a.upper().count(let_b)%2!=0 else let_b for let_b in b])
+    return ''.join([let_a.swapcase() if b.lower().count(let_a)%2!=0 or \
+                    b.upper().count(let_a)%2!=0 else let_a for let_a in a] + \
+                   [let_b.swapcase() if a.lower().count(let_b)%2!=0 or \
+                    a.upper().count(let_b)%2!=0 else let_b for let_b in b])
 
 
 
