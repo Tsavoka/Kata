@@ -1,0 +1,31 @@
+# Input: String which consists of two positive numbers (doubles) and
+# exactly one operator like +,-,*,/, always between these numbers. The
+# string is dirty, which means that there are different characters
+# inside too, not only numbers and the operator. You have to combine all
+# digits left and right, perhaps with "." inside (doubles) and to
+# calculate the result which has to be rounded to an integer and
+# converted to a string at the end.
+
+import re
+
+
+def calculate_string(st): 
+    for_calc = ''.join(re.findall(r'[0-9\.\+\-\*\/]', st))
+    result = re.split(r'[\+\-\*\/]', for_calc)
+    if '+' in for_calc:
+        return str(round(float(result[0]) + float(result[1])))
+    elif '-' in for_calc:
+        return str(round(float(result[0]) - float(result[1])))
+    elif '*' in for_calc:
+        return str(round(float(result[0]) * float(result[1])))
+    else:
+        return str(round(float(result[0]) / float(result[1])))
+
+
+
+
+print(calculate_string(";$%§fsdfsd235??df/sdfgf5gh.000kk0000"))         # "47"
+print(calculate_string("sdfsd23454sdf*2342"))                           # "54929268"
+print(calculate_string("fsdfsd235???34.4554s4234df-sdfgf2g3h4j442"))    # "-210908"
+print(calculate_string("fsdfsd234.4554s4234df+sf234442"))               # "234676"
+print(calculate_string("a1a2b3c.c0c/a1a0b.cc00c"))                      #  '12'
