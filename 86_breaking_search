@@ -1,0 +1,23 @@
+#The function must return the sequence of titles that match the string
+# passed as an argument.
+# titles = ['Rocky 1', 'Rocky 2', 'My Little Poney']
+# search(titles, 'ock') --> ['Rocky 1', 'Rocky 2']
+# But the function return some weird result and skip some of the
+# matching results.
+# Let's figure out!
+
+def search(titles, term): 
+    return list(filter(lambda title: term in title.lower(), titles))
+
+
+
+
+titles = ['The Big Bang Theory', 'How I Met Your Mother', 'Dexter', \
+          'Breaking Bad', 'Doctor Who', 'The Hobbit', 'Pacific Rim', \
+          'Pulp Fiction', 'The Avengers', 'Shining']
+print(search(titles, 'ho'))
+# ['How I Met Your Mother', 'Doctor Who', 'The Hobbit'])
+print(search(titles, 'exte'))
+# ['Dexter'])
+print(search(titles, 'the'))
+# ['The Big Bang Theory', 'How I Met Your Mother', 'The Hobbit', 'The Avengers'])   
