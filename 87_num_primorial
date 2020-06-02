@@ -1,0 +1,32 @@
+# Is similar to factorial of a number, In primorial, not all the natural
+# numbers get multiplied, only prime numbers are multiplied to calculate
+# the primorial of a number.
+# Given a number N , calculate its primorial.
+# Ex: numPrimorial (3) ==> return (30)
+# Since the passed number is (3) ,Then the primorial should obtained by
+# multiplying 2 * 3 * 5 = 30 .
+
+from math import sqrt
+from functools import reduce
+
+
+def is_prime(n):
+  return n > 1 and all(n % d for d in range(2, int(sqrt(n)) + 1))
+
+def num_primorial(n):
+    primes = [2]
+    i = 3
+    while len(primes) < n:
+        if is_prime(i) == 1:
+            primes.append(i)
+        i+=2
+    return reduce(lambda a,b: a*b, primes)
+
+
+
+
+print(num_primorial(3))     # 30
+print(num_primorial(4))     # 210
+print(num_primorial(5))     # 2310
+print(num_primorial(8))     # 9699690
+print(num_primorial(9))     # 223092870
