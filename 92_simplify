@@ -1,0 +1,25 @@
+# Given a positive integer as input, return the output as a string in
+# the following format:
+# Each element, corresponding to a digit of the number, multiplied by a
+# power of 10 in such a way that with the sum of these elements you can
+# obtain the original number.
+
+def simplify(number):
+    result = []
+    for num in str(number):
+        if num == '0':
+            number = str(number)[1:]
+        if len(str(number)) > 1 and num != '0':
+            result.append(num+'*1'+'0'*len(str(number)[1:]))
+            number = str(number)[1:]
+        elif len(str(number)) == 1 and num != '0':
+            result.append(num)
+        
+    return '+'.join(result)
+
+
+
+print(simplify(56))     # "5*10+6"
+print(simplify(999))    # "9*100+9*10+9"
+print(simplify(11))     # "1*10+1"
+print(simplify(9090))   # "9*1000+9*10"
