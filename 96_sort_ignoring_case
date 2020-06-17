@@ -1,0 +1,15 @@
+# Sort the given strings in alphabetical order, case insensitive.
+# For example:
+# ["Hello", "there", "I'm", "fine"] -> ["fine", "Hello", "I'm", "there"]
+
+
+def sortme(words):
+    return sorted(words, key=str.lower)
+
+
+
+
+print(sortme(["Hello", "there", "I'm", "fine"]))
+# ["fine", "Hello", "I'm", "there"]
+print(sortme(["C", "d", "a", "B"])) # ["a", "B", "C", "d"]
+print(sortme(["CodeWars"]))         # ["CodeWars"]
