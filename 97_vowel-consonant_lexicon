@@ -1,0 +1,46 @@
+# If we alternate the vowels and consonants in the string "have", we get
+# the following list, arranged alphabetically: ['ahev', 'aveh', 'ehav',
+# 'evah', 'vahe', 'veha']. These are the only possibilities in which
+# vowels and consonants are alternated. The first element, ahev, is
+# alphabetically lowest.
+# Given a string:
+# - alternate the vowels and consonants and return the lexicographically
+# lowest element in the list
+# - If any two or more vowels or consonants must follow each other,
+# return "failed"
+# - if the number of vowels and consonants are equal, the first letter
+# of the result must be a vowel.
+# Vowels will be any of "aeiou". Input will be a lowercase string, no
+# spaces. 
+
+import re
+
+
+def solve(s):
+    result = []
+    vowels = sorted(re.findall(r'[aeiou]', s), reverse=True)
+    consonants = sorted(re.findall(r'[^aeiou]', s), reverse=True)
+    if abs(len(vowels) - len(consonants)) > 1:
+        return 'failed'
+    if len(consonants) > len(vowels):
+        result.append(consonants[-1])
+        consonants.pop()
+    while consonants:
+        result.append(vowels[-1])
+        vowels.pop()
+        result.append(consonants[-1])
+        consonants.pop()
+    if len(vowels) != 0:
+        result.append(vowels[0])
+    return ''.join(result)
+
+
+
+
+print(solve("java"))        # 'ajav'
+print(solve("oruder"))      # 'edorur'
+print(solve("zodiac"))      # 'acidoz'
+print(solve("apple"))       # 'lapep'
+print(solve("acidity"))     # 'caditiy'
+print(solve("codewars"))    # 'failed'
+print(solve("orudere"))     # 'ederoru'
