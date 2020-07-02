@@ -1,0 +1,43 @@
+# Kata Task
+# Decipher the tweet by looking for words with known meanings.
+# FIRE = *"You are fired!"*
+# FURY = *"I am furious."*
+# If no known words are found, or unexpected letters are encountered,
+# then it must be a *"Fake tweet."*
+# Notes
+# The tweet reads left-to-right.
+# Any letters not spelling words FIRE or FURY are just ignored
+# If multiple of the same words are found in a row then plural rules
+# apply -
+# FIRE x 1 = *"You are fired!"*
+# FIRE x 2 = *"You and you are fired!"*
+# FIRE x 3 = *"You and you and you are fired!"*
+# FURY x 1 = *"I am furious."*
+# FURY x 2 = *"I am really furious."*
+# FURY x 3 = *"I am really really furious."*
+# The only letters still working are uppercase E, F, I, R, U, Y.
+
+import re
+from itertools import groupby
+
+
+def fire_and_fury(tweet):
+    if len(re.findall(r'[^EFIRUY]', tweet)) > 0:
+        return 'Fake tweet.'
+    result = []
+    tweet = re.findall(r'FURY|FIRE', tweet)
+    list_tweet = [list(y) for x,y in groupby(tweet)]
+    for i in list_tweet:
+        if i[0] == 'FIRE':
+            result.append("You {}are fired!".format('and you '*(len(i)-1)))
+        else:
+            result.append("I am {}furious.".format('really '*(len(i)-1)))
+
+    return ' '.join(result) if len(result) else 'Fake tweet.'
+            
+
+
+
+print(fire_and_fury("FURYYYFIREYYFIRE"))            # "I am furious. You and you are fired!"
+print(fire_and_fury("FIREYYFURYYFURYYFURRYFIRE"))   #  "You are fired! I am really furious. You are fired!"
+print(fire_and_fury("FYRYFIRUFIRUFURE"))            # "Fake tweet."
