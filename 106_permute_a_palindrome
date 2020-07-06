@@ -1,0 +1,29 @@
+# Write a function that will check whether the permutation of an input
+# string is a palindrome. Bonus points for a solution that is efficient
+# and/or that uses only built-in language functions. Deem yourself
+# brilliant if you can come up with a version that does not use any
+# function whatsoever.
+
+def permute_a_palindrome(s):
+    if len(s) < 2:
+        return True
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return True
+    counter = 0
+    for word in s:
+        if s.count(word) % 2 != 0:
+            counter += 1
+    return counter == 1
+
+
+
+
+print(permute_a_palindrome("a"))            # True
+print(permute_a_palindrome("aa"))           # True
+print(permute_a_palindrome("baa"))          # True
+print(permute_a_palindrome("aab"))          # True
+print(permute_a_palindrome("baabcd"))       # False
+print(permute_a_palindrome("racecars"))     # False
+print(permute_a_palindrome("abcdefghba"))   # False
+print(permute_a_palindrome(""))             # True
