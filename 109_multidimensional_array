@@ -1,0 +1,23 @@
+# Write a function that gets a sequence and value and returns true/false
+# depending on whether the variable exists in a multidimentional
+# sequence.
+
+def locate(seq, value):
+    for i in seq:
+        if i == value:
+            return True
+        elif type(i) == list:
+            return locate(i, value)
+    return False
+
+
+
+
+print(locate(['a','b',['c','d',['e']]],'a'))    # True
+print(locate(['a','b',['c','d',['e']]],'d'))    # True
+print(locate(['a','b',['c','d',['e']]],'e'))    # True
+print(locate(['a','b',['c','d',['e']]],'f'))    # False
+print(locate(['a','b',['c','d',['e',['a','b',['c','d',['e4']]]]]],'e4'))
+# True
+print(locate(['a','b',['c','d',['e',['a','b',['c','d',['e',['a','b',['c','d',['e4',['a','b',['c','d',['e',['a','b',['c','d',['e',['a','b',['c','d',['e14']]]]]],]]]]]]]]],]]],'e'))
+# True
