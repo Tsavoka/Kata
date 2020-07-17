@@ -1,0 +1,18 @@
+# In this Kata, you will be given a string that may have mixed uppercase
+# and lowercase letters and your task is to convert that string to
+# either lowercase only or uppercase only based on:
+# - make as few changes as possible.
+# - if the string contains equal number of uppercase and lowercase
+# letters, convert the string to lowercase.
+
+def solve(s):
+    s_tf = [i.isupper() for i in s]
+    return s.upper() if s_tf.count(True) > s_tf.count(False) else s.lower()
+
+
+
+
+print(solve("code"))    # "code"
+print(solve("CODe"))    # "CODE"
+print(solve("COde"))    # "code"
+print(solve("Code"))    # "code"
