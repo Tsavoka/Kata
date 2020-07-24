@@ -1,0 +1,56 @@
+# Steve has already obtained the beacon (the glass wrapped blue thingy
+# on the top), he just needs to build the pyramid. Each level of the
+# pyramid is built using one of the following four kinds of block: gold,
+# diamond, emerald, and iron. Since these four kinds of blocks are
+# relatively hard to collect, Steve needs to know exactly how many of
+# each kind is required to build a pyramid of level N.
+# Assume that the top level of the pyramid uses gold blocks, the second
+# level uses diamond blocks, the third level uses emerald blocks, the
+# fourth level uses iron blocks, and the fifth level uses gold blocks,
+# etc. 
+# Implement a function that takes one argument which is the number of
+# levels of the pyramid, and returns an object of the form: {total: 9,
+# gold: 9, diamond: 0, emerald: 0, iron: 0}.
+
+def blocks_to_collect(level):
+    btc = {"total": 0, "gold": 0, "diamond": 0, "emerald": 0, "iron": 0}
+    while level > 0:
+        if level % 4 != 0 or level < 4:
+            counter = level % 4
+        else:
+            counter = 4
+        while counter > 0:
+            if counter == 4:
+                btc['iron'] += (level+level+1) ** 2
+                level -= 1
+                counter -= 1
+            elif counter == 3:
+                btc['emerald'] += (level+level+1) ** 2
+                level -= 1
+                counter -= 1
+            elif counter == 2:
+                btc['diamond'] += (level+level+1) ** 2
+                level -= 1
+                counter -= 1
+            else:
+                btc['gold'] += (level+level+1) ** 2
+                level -= 1
+                counter -= 1
+    btc['total'] = btc['gold'] + btc['diamond'] + btc['emerald'] + btc['iron']
+    return btc
+
+
+
+
+print(blocks_to_collect(1))
+# {"total": 9, "gold": 9, "diamond": 0, "emerald": 0, "iron": 0}
+print(blocks_to_collect(2))
+# {"total": 34, "gold": 9, "diamond": 25, "emerald": 0, "iron": 0}
+print(blocks_to_collect(3))
+# {"total": 83, "gold": 9, "diamond": 25, "emerald": 49, "iron": 0}
+print(blocks_to_collect(5))
+# {'total': 285, 'gold': 130, 'diamond': 25, 'emerald': 49, 'iron': 81}
+print(blocks_to_collect(11))
+# {'total': 2299, 'gold': 491, 'diamond': 635, 'emerald': 803, 'iron': 370}
+print(blocks_to_collect(33))
+# {'total': 52393, 'gold': 14865, 'diamond': 11400, 'emerald': 12488, 'iron': 13640}
