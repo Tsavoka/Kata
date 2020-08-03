@@ -1,0 +1,20 @@
+# In this Kata, we are going to reverse a string while maintaining spaces.
+
+def solve(s):
+    result = ''
+    for_res = ''.join(s.split())
+    for i in s:
+        if i != ' ':
+            result += for_res[-1]
+            for_res = for_res[:-1]
+        else:
+            result += ' '
+    return result
+
+
+
+
+print(solve("codewars"))            # "srawedoc"
+print(solve("your code"))           # "edoc ruoy"
+print(solve("your code rocks"))     # "skco redo cruoy"
+print(solve("i love codewars"))     # "s rawe docevoli"
