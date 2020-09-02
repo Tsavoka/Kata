@@ -1,0 +1,28 @@
+# Given string s, which contains only letters from a to z in lowercase.
+# A set of alphabet is given by abcdefghijklmnopqrstuvwxyz.
+# 2 sets of alphabets mean 2 or more alphabets.
+# Your task is to find the missing letter(s). You may need to output them
+# by the order a-z. It is possible that there is more than one missing
+# letter from more than one set of alphabet.
+# If the string contains all of the letters in the alphabet, return an
+# empty string ""
+
+from string import ascii_lowercase
+from collections import Counter
+
+
+def missing_alphabets(s):
+    quan = max(s.count(i) for i in s)
+    return ''.join(sorted((Counter(ascii_lowercase*quan) - Counter(s)).elements()))       
+    
+
+
+
+print(missing_alphabets("abcdefghijklmnopqrstuvwxy"))   # "z"
+print(missing_alphabets("abcdefghijklmnopqrstuvwxyz"))  # ""
+print(missing_alphabets("aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyy"))
+# "zz"
+print(missing_alphabets("abbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxy"))
+# "ayzz"
+print(missing_alphabets("codewars"))
+# "bfghijklmnpqtuvxyz"
