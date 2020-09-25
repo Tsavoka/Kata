@@ -1,0 +1,34 @@
+# In this Kata, you will be given a number and your task will be to
+# return the nearest prime number.
+# solve(4) = 3. The nearest primes are 3 and 5. If difference is equal,
+# pick the lower one. 
+# solve(125) = 127
+# We'll be testing for numbers up to 1E10. 500 tests.
+
+def is_prime(n):
+    return n > 1 and all(n % d for d in range(2, int(n**.5) + 1))
+ 
+def solve(n):
+    i = 1
+    while True:
+        if is_prime(n):
+            return n
+        elif is_prime(n-i):
+            return n-i
+        elif is_prime(n+i):
+            return n+i
+        i += 1
+
+
+
+
+print(solve(3))             # 3
+print(solve(11))            # 11
+print(solve(4))             # 3
+print(solve(110))           # 109
+print(solve(1110))          # 1109
+print(solve(3000))          # 2999
+print(solve(35000))         # 34981
+print(solve(350000))        # 350003
+print(solve(3500000))       # 3499999
+print(solve(10000000000))   # 10000000019
