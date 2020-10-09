@@ -1,0 +1,27 @@
+# Given a sequence of characters, does "abc" appear in the CENTER of
+# the sequence?
+# The sequence of characters could contain more than one "abc".
+# To define CENTER, the number of characters in the sequence to the
+# left and right of the "abc" (which is in the middle) must differ by at
+# most one.
+# If it is in the CENTER, return True. Otherwise, return False.
+# Write a function as the solution for this problem. This kata looks
+# simple, but it might not be easy.
+
+import re
+
+
+def is_in_middle(sequence):
+    if sequence.count('abc')%2 == 0:
+        return False
+    seq = re.split(r'abc', sequence)
+    return len(seq[0]) - len(seq[-1]) in [-1, 0, 1]
+
+
+
+
+print(is_in_middle("AAabcBB"))      # True
+print(is_in_middle("AabcBB"))       # True
+print(is_in_middle("AabcBBB"))      # False
+print(is_in_middle("abcabcabcabc")) # False
+print(is_in_middle("abcabcabc"))    # True
