@@ -1,0 +1,22 @@
+# The program was supposed to do the following: in the given string,
+# consisting of uppercase and lowercase Latin letters, it:
+# - deletes all the vowels,
+# - inserts a character "." before each consonant,
+# - replaces all uppercase consonants with corresponding lowercase ones.
+# Vowels are letters "A", "O", "Y", "E", "U", "I", and the rest are
+# consonants. The program's input is exactly one string, it should return
+# the output as a single string, resulting after the program's processing
+# the initial string.
+
+import re
+
+
+def string_task(s):
+    return ''.join('.'+i for i in re.findall(r'[^aoyeui]', s.lower()))
+
+
+
+
+print(string_task("Tour"))      # ".t.r"
+print(string_task("Codewars"))  # ".c.d.w.r.s"
+print(string_task("aBAcAba"))   # ".b.c.b"
