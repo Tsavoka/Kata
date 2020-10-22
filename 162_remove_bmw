@@ -1,0 +1,21 @@
+# Your task is to write a function that takes one parameter str that MUST
+# be a string and removes all capital and small letters B, M and W. If
+# data of the wrong data type was sent as a parameter the function must
+# throw an error (IllegalArgumentException in Groovy): "This program only
+# works for text."
+
+import re
+
+
+def remove_bmw(string):
+    try:
+        return ''.join(re.findall(r'[^BMWbmw]', string))
+    except:
+        return "This program only works for text."
+
+
+
+
+print(remove_bmw("bmwvolvoBMW"))    # "volvo"
+print(remove_bmw("blablahblah"))    # "lalahlah"
+print(remove_bmw(12312))
