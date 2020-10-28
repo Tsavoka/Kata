@@ -1,0 +1,23 @@
+# Your task is to write a function called valid_spacing() which checks if
+# a string has valid spacing. The function should return either True or
+# False.
+# For this kata, the definition of valid spacing is one space between
+# words, and no leading or trailing spaces. Below are some examples of
+# what the function should return.
+# 'Hello world' = True
+# ' Hello world' = False
+
+import re
+
+
+def valid_spacing(s):
+    return re.sub(r'\s+', ' ', s).strip() == s
+
+
+
+
+print(valid_spacing('Hello world'))     # True
+print(valid_spacing(' Hello world'))    # False
+print(valid_spacing('Hello  world '))   # False
+print(valid_spacing('Hello'))           # True
+print(valid_spacing('Helloworld'))      # True
