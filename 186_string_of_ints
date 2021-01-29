@@ -1,0 +1,15 @@
+# Write a function that takes a string which has integers inside 
+# it separated by spaces, and your task is to convert each 
+# integer in the string into an integer and return their sum.
+
+def summy(string_of_ints):
+    return sum(map(int, string_of_ints.split()))
+    
+    
+    
+    
+print(summy("1 2 3"))     # 6
+print(summy("1 2 3 4"))   # 10
+print(summy("1 2 3 4 5")) # 15
+print(summy("10 10"))     # 20
+print(summy("0 0"))       # 0
