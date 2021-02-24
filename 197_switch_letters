@@ -1,0 +1,31 @@
+# Given a string made up of letters a, b, and/or c, switch the position
+# of letters a and b (change a to b and vice versa). Leave any incidence
+# of c untouched.
+# Example:
+# 'acb' --> 'bca'
+# 'aabacbaa' --> 'bbabcabb'
+
+'''
+def switcheroo(string):
+    rez = []
+    for i in string:
+        if i == 'a':
+            rez.append('b')
+        elif i == 'b':
+            rez.append('a')
+        else:
+            rez.append(i)
+    return ''.join(rez)
+'''
+
+def switcheroo(string):
+    return string.translate(string.maketrans('ab', 'ba'))
+
+
+
+
+print(switcheroo("abc"))                # "bac"
+print(switcheroo('aaabcccbaaa'))        # 'bbbacccabbb'
+print(switcheroo('ccccc'))              # 'ccccc'
+print(switcheroo('abababababababab'))   # 'babababababababa'
+print(switcheroo('aaaaa'))              # 'bbbbb'
