@@ -1,0 +1,16 @@
+# Create a function that returns the average of an array of
+# numbers ("scores"), rounded to the nearest whole number. You are
+# not allowed to use any loops (including for, for/in, while, and
+# do/while loops).
+
+def average(array):
+    return round(sum(array)/len(array))
+
+
+
+
+print(average([5, 78, 52, 900, 1])) # 207
+print(average([5, 25, 50, 75]))     # 39
+print(average([2]))                 # 2
+print(average([1, 1, 1, 1, 9999]))  # 2001
+print(average([0]))                 # 0
