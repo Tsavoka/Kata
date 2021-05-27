@@ -1,0 +1,17 @@
+# Given a sequence of integers, return the sum of all the integers
+# that have an even index, multiplied by the integer at the last index.
+# Indices in sequence start from 0.
+# If the sequence is empty, you should return 0.
+
+def even_last(numbers):
+    try:
+        return sum(i for i in numbers[::2])*numbers[-1]
+    except:
+        return 0
+
+
+
+
+print(even_last([2, 3, 4, 5]))  # 30
+print(even_last([]))            # 0
+print(even_last([2, 2, 2, 2]))  # 8
