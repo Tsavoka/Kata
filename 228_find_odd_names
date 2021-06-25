@@ -1,0 +1,33 @@
+# You will be given an array of objects representing data about
+# developers who have signed up to attend the next coding meetup that
+# you are organising.
+# Write a function that when executed as findOddNames(list1) returns
+# only the developers where if you add the ASCII representation of all
+# characters in their first names, the result will be an odd number.
+# Preserve the order of the original list.
+# Return an empty array [] if there is no developer with an "odd" name.
+# The input array and first names will always be valid and formatted
+# as in the example above.
+
+def find_odd_names(lst): 
+    return [i for i in lst if sum(map(ord,i['firstName']))%2!=0]
+
+
+
+
+list1 = [
+        { 'firstName': 'Aba', 'lastName': 'N.', 'country': 'Ghana', 'continent': 'Africa', 'age': 21, 'language': 'Python' },
+        { 'firstName': 'Abb', 'lastName': 'O.', 'country': 'Israel', 'continent': 'Asia', 'age': 39, 'language': 'Java' }
+        ]       
+answer1 = [
+        { 'firstName': 'Abb', 'lastName': 'O.', 'country': 'Israel', 'continent': 'Asia', 'age': 39, 'language': 'Java' }
+        ]
+                   
+list2 = [
+        { 'firstName': 'Aba', 'lastName': 'N.', 'country': 'Ghana', 'continent': 'Africa', 'age': 21, 'language': 'Python' },
+        ]
+answer2 = []
+
+
+print(find_odd_names(list1))    # answer1
+print(find_odd_names(list2))    # answer2
