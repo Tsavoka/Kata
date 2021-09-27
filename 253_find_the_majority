@@ -1,0 +1,31 @@
+# Given a list of elements [a1, a2, ..., an], with each ai being a
+# string, write a function majority that returns the value that appears
+# the most in the list.
+# If there's no winner, the function should return None, NULL, nil, etc,
+# based on the programming language.
+# Example
+# majority(["A", "B", "A"]) returns "A"
+# majority(["A", "B", "B", "A"]) returns None
+
+from collections import Counter
+
+def majority(arr):
+    c = Counter(arr).most_common(2)
+    if len(c) > 1:
+        if c[0][1] == c[1][1]:
+            return None
+        else:
+            return c[0][0]
+    elif len(c) == 1:
+        return c[0][0]
+
+
+
+print(majority(["A", "B", "A"]))            # "A"
+print(majority(["A", "B", "C"]))            # None
+print(majority(["A", "B", "B", "A"]))       # None
+print(majority(['A','A','A','A']))          # "A"
+print(majority(['A',]))                     # "A"
+print(majority(['A','A','A','BBBBBBBB']))   # "A"
+print(majority(["A", "B", "C", "C"]))       # "C"
+print(majority([]))                         # None
