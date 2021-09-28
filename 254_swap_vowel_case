@@ -1,0 +1,19 @@
+# Given a string, return a copy of the string with the vowels' case
+# swapped.
+# For this kata, assume that vowels are in the set "aeouiAEOUI".
+# Example: Given a string "C is alive!", your function should return "C
+# Is AlIvE!"
+# Addendum: Your solution is only required to work for the ASCII character
+# set.
+# Please make sure you only swap cases for the vowels.
+
+def swap_vowel_case(st): 
+    return st.translate(st.maketrans('aeouiAEOUI', 'AEOUIaeoui'))
+
+
+
+
+print(swap_vowel_case(" "))             # " "
+print(swap_vowel_case("C Is AlIvE!"))   # "C is alive!"
+print(swap_vowel_case("to"))            # "tO"
+print(swap_vowel_case("The"))           # "ThE"
