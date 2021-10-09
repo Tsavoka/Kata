@@ -1,0 +1,16 @@
+# Let's assume we need "clean" strings. Clean means a string should only
+# contain letters a-z, A-Z and spaces. We assume that there are no double
+# spaces or line breaks.
+# Write a function that takes a string and returns a string without the
+# unnecessary characters.
+
+import re
+
+def remove_chars(s):
+    return ''.join(re.findall(r'[A-Za-z ]', s))
+
+
+
+
+print(remove_chars("test for error!"))  # "test for error"
+print(remove_chars(".tree1"))           # 'tree'
