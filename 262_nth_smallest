@@ -1,0 +1,24 @@
+# Given an array/list [] of integers , Find the Nth smallest element in
+# this array of integers
+# Array/list size is at least 3 .
+# Array/list's numbers could be a mixture of positives , negatives and
+# zeros .
+# Repetition in array/list's numbers could occur , so don't Remove
+# Duplications .
+# Input >> Output Examples
+# nthSmallest({3,1,2} ,2) ==> return (2) 
+# Explanation:
+# Since the passed number is 2 , Then * the second smallest element in this
+# array/list is 2*
+
+def nth_smallest(arr, pos):
+    return sorted(arr)[pos-1]
+
+
+
+
+print(nth_smallest([3,1,2],2))                  # 2
+print(nth_smallest([15,20,7,10,4,3],3))         # 7
+print(nth_smallest([-5,-1,-6,-18],4))           # -1
+print(nth_smallest([-102,-16,-1,-2,-367,-9],5)) # -2
+print(nth_smallest([2,169,13,-5,0,-1],4))       # 2
