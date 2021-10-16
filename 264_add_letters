@@ -1,0 +1,24 @@
+# Your task is to add up letters to one letter.
+# The function will be given a variable amount of arguments, each one
+# being a letter to add.
+# Notes:
+# Letters will always be lowercase.
+# Letters can overflow.
+# If no letters are given, the function should return 'z'.
+
+
+from string import ascii_lowercase
+
+def add_letters(*letters):
+    return ascii_lowercase[sum(ascii_lowercase.index(i)+1 for x in letters for i in x)%26-1]
+
+
+
+
+print(add_letters(['a', 'b', 'c']))  # 'f'
+print(add_letters(['z']))            # 'z'
+print(add_letters(['a', 'b']))       # 'c'
+print(add_letters(['c']))            # 'c'
+print(add_letters(['z', 'a']))       # 'a'
+print(add_letters(['y', 'c', 'b']))  # 'd'
+print(add_letters([]))               # 'z'
