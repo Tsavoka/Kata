@@ -1,0 +1,27 @@
+# Given an array of N integers, you have to find how many times you have
+# to add up the smallest numbers in the array until their Sum becomes
+# greater or equal to K.
+# Notes:
+# List size is at least 3.
+# All numbers will be positive.
+# Numbers could occur more than once , (Duplications may exist).
+# Threshold K will always be reachable.
+
+def minimum_steps(numbers, value):
+    numbers = sorted(numbers)
+    x = numbers[0]
+    rez = 0
+    for i in numbers[1:]:
+        if x < value:
+            x += i
+            rez += 1
+    return rez
+
+
+
+
+print(minimum_steps([4,6,3], 7))                        # 1
+print(minimum_steps([10,9,9,8], 17))                    # 1
+print(minimum_steps([8,9,10,4,2], 23))                  # 3
+print(minimum_steps([19,98,69,28,75,45,17,98,67], 464)) # 8
+print(minimum_steps([4,6,3], 2))                        # 0
