@@ -1,0 +1,21 @@
+# A family of kookaburras are in my backyard.
+# I can't see them all, but I can hear them!
+# The trick to counting kookaburras is to listen carefully
+# The males go HaHaHa...
+# The females go hahaha...
+# And they always alternate male/female
+
+import re
+
+
+def kooka_counter(laughing):
+    return len(re.findall(r'(ha)+|(Ha)+', laughing))
+
+
+
+
+print(kooka_counter(""))                    # 0
+print(kooka_counter("hahahahaha"))          # 1
+print(kooka_counter("hahahahahaHaHaHa"))    # 2
+print(kooka_counter("HaHaHahahaHaHa"))      # 3
+print(kooka_counter("hahahahahahahaHaHa"))  # 2
