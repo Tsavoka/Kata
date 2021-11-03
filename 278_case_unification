@@ -1,0 +1,20 @@
+# Given an initial string s, switch case of the minimal possible number
+# of letters to make the whole string written in the upper case or in the
+# lower case.
+# String of odd length consisting of English letters.
+# 3 ≤ inputString.length ≤ 99.
+# The resulting string.
+# Example
+# For s = "Aba", the output should be "aba"
+# For s = "ABa", the output should be "ABA"
+
+def case_unification(s):
+    return s.lower() if len([i for i in s if i.islower()]) > len(s)/2 else s.upper()
+
+
+
+
+print(case_unification('asdERvT'))          # 'asdervt'
+print(case_unification('oyTYbWQ'))          # 'OYTYBWQ'
+print(case_unification('biIRvbcW'))         # 'biirvbcw'
+print(case_unification('orWTmvcoRWEWQQWR')) # 'ORWTMVCORWEWQQWR'
