@@ -1,0 +1,13 @@
+# Write a function that adds from two invocations.
+# All inputs will be integers.
+
+def add(a):
+    return lambda x: x + a
+    
+    
+    
+
+print(add(32))
+print(add(15))
+print(add(2)(5))    # 7
+print(add(14)(25))  # 39
