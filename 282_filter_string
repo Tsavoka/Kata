@@ -1,0 +1,15 @@
+# Your task is to return a number from a string.
+# You will be given a string of numbers and letters mixed up, you have
+# to return all the numbers in that string in the order they occur.
+
+def filter_string(string):
+    return int(''.join(filter(str.isdigit, string)))
+   
+
+
+
+print(filter_string("123"))         # 123
+print(filter_string("a1b2c3"))      # 123
+print(filter_string("aa1bb2cc3dd")) # 123
+print(filter_string("aa 112 3dd"))  # 1123
+print(filter_string("11bb2c23c3"))  # 112233
