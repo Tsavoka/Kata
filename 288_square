@@ -1,0 +1,25 @@
+# Write a program that calculates the number of grains of wheat on a
+# specific square of chessboard given that the number on each square is
+# double the previous one.
+# There are 64 squares on a chessboard.
+# Example: square(1) = 1 square(2) = 2 square(3) = 4 square(4) = 8 etc...
+# Write a program that shows how many grains were on each square.
+
+def square(number):
+    return square_rec(number, 1, 1)
+    
+def square_rec(number, counter, rez):
+    if number == counter:
+        return rez
+    else:
+        rez = rez*2
+    return square_rec(number, counter+1, rez)
+
+
+
+
+print(square(1))    # 1
+print(square(3))    # 4
+print(square(4))    # 8
+print(square(16))   # 32768
+print(square(32))   # 2147483648
