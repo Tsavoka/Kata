@@ -1,0 +1,26 @@
+# Create a function that takes an argument n and sums even Fibonacci
+# numbers up to n's index in the Fibonacci sequence.
+# Example:
+# sum_fibs(5) == 2 # (0, 1, 1, 2, 3, 5); 2 is the only even number in
+# the sequence and doesn't have another number in the sequence to get
+# added to in the indexed Fibonacci sequence.
+# Example:
+# sum_fibs(9) == 44 # (0, 1, 1, 2, 3, 5, 8, 13, 21, 34)
+# 2 + 8 + 34 = 44
+
+def sum_fibs(n):
+    fib1 = fib2 = 1
+    rez = 0
+    for i in range(2, n):
+        fib1, fib2 = fib2, fib1 + fib2
+        if fib2 % 2 == 0:
+            rez += fib2
+    return rez
+
+
+
+
+print(sum_fibs(5))   # 2
+print(sum_fibs(9))   # 44
+print(sum_fibs(10))  # 44
+print(sum_fibs(11))  # 44
