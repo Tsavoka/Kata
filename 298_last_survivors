@@ -1,0 +1,42 @@
+# Substitute two equal letters by the next letter of the alphabet (two
+# letters convert to one):
+# "aa" => "b", "bb" => "c", .. "zz" => "a".
+# The equal letters do not have to be adjacent.
+# Repeat this operation until there are no possible substitutions left.
+# Return a string.
+# Example:
+# let str = "zzzab"
+#     str = "azab"
+#     str = "bzb"
+#     str = "cz"
+# return "cz"
+# Notes
+# The order of letters in the result is not important.
+# The letters "zz" transform into "a".
+# There will only be lowercase letters.
+
+def last_survivors(string):
+    string = (sorted(string))    
+    if len(set(string)) == len(string):
+        return ''.join(string)    
+    else:
+        rez = string[0]
+        for i in string[1:]:
+            if i == rez[-1]:
+                rez = rez[:-1]
+                if i == 'z':
+                    rez += 'a'
+                else:
+                    rez += chr(ord(i)+1)
+            else:
+                rez += i
+            string = sorted(rez)
+        return last_survivors(string)
+
+
+
+
+print(last_survivors('abaa'))   # 'ac'
+print(last_survivors(''))       # ''
+print(last_survivors('xsdlafqpcmjytoikojsecamgdkehrqqgfknlhoudqygkbxftivfbpxhxtqgpkvsrfflpgrlhkbfnyftwkdebwfidmpauoteahyh'))
+# 'acdeghlmnqrvyz'
