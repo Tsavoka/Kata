@@ -1,0 +1,60 @@
+# Your task is to write a function, called format_playlist, that takes a
+# list of songs as input.
+# Each song is a tuple, of the form (song_name, duration, artist). Your
+# task is to create a string representation of these songs.
+# Your playlist should be sorted first by the artist, then by the name of
+# the song.
+# All input will be valid.
+# The length of the song will be at least 1 minute long, but never 10
+# minutes or longer. It will be of the form m:ss.
+# There will never be empty fields (each song will have a name, duration
+# and artist).
+
+def format_playlist(songs):
+    if len(songs) == 0:
+        return "+------+------+--------+\n| Name | Time | Artist |\n+------+------+--------+"
+    by_song = sorted(songs, key=lambda x: x[0])
+    max_song = max(len(i[0]) for i in songs)
+    by_art = sorted(by_song, key=lambda x: x[2])
+    max_art = max(len(i[2]) for i in songs)
+    rez = "+-{}-+------+-{}-+\n".format('-'*max_song, '-'*max_art)
+    rez +=('| {} | {} | {} |\n'.format('Name'+' '*(max_song-4),
+                                       'Time',
+                                       'Artist'+' '*(max_art-6)))
+    rez += "+-{}-+------+-{}-+\n".format('-'*max_song, '-'*max_art)
+    for i in by_art:
+        rez += ('| {} | {} | {} |\n'.format(i[0]+' '*(max_song-len(i[0])),
+                                            i[1],
+                                            i[2]+' '*(max_art-len(i[2]))))
+    rez += "+-{}-+------+-{}-+".format('-'*max_song, '-'*max_art)
+    return rez
+
+
+
+
+print(format_playlist([
+    ('Stoned Again', '3:25', 'King Krule'),
+    ('Serenade', '3:00', 'Travis Scott'),
+    ('I Always Wanna Die (Sometimes)', '5:15', 'The 1975'),
+    ('Stick Talk', '2:54', 'Future'),
+    ('Nightcrawler', '5:22', 'Travis Scott')]))
+# "+--------------------------------+------+--------------+\n" \
+# "| Name                           | Time | Artist       |\n" \
+# "+--------------------------------+------+--------------+\n" \
+# "| Stick Talk                     | 2:54 | Future       |\n" \
+# "| Stoned Again                   | 3:25 | King Krule   |\n" \
+# "| I Always Wanna Die (Sometimes) | 5:15 | The 1975     |\n" \
+# "| Nightcrawler                   | 5:22 | Travis Scott |\n" \
+# "| Serenade                       | 3:00 | Travis Scott |\n" \
+# "+--------------------------------+------+--------------+"
+print(format_playlist([
+    ('In Da Club', '3:13', '50 Cent'),
+    ('Candy Shop', '3:45', '50 Cent'),
+    ('One', '4:36', 'U2'),
+    ('Wicked', '2:53', 'Future'),
+    ('Cellular', '2:58', 'King Krule'),
+    ('The Birthday Party', '4:45', 'The 1975'),
+    ('In The Night Of Wilderness', '5:26', 'Blackmill'),
+    ('Pull Up', '3:35', 'Playboi Carti'),
+    ('Cudi Montage', '3:16', 'KIDS SEE GHOSTS'),
+    ('What Up Gangsta', '2:58', '50 Cent')]))
