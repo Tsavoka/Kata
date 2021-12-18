@@ -1,0 +1,38 @@
+# Description:
+# Create a function that returns a christmas tree of the correct height.
+# For example:
+# height = 5 should return:
+#     *    
+#    ***   
+#   *****  
+#  ******* 
+# *********
+# Height passed is always an integer between 0 and 100.
+# Use \n for newlines between each line.
+# Pad with spaces so each line is the same length. The last line having
+# only stars, no spaces.
+
+def christmas_tree(height):
+    rez = []
+    dot = height - 1
+    star = 1
+    for i in range(height):
+        rez.append('{0}{1}{0}'.format(' '*dot, '*'*star))
+        star += 2
+        dot -= 1
+    return '\n'.join(rez)
+
+
+
+
+print(christmas_tree(0)) 
+print(christmas_tree(1)) 
+print(christmas_tree(2)) 
+print(christmas_tree(3)) 
+print(christmas_tree(4)) 
+print(christmas_tree(5)) 
+print(christmas_tree(6)) 
+print(christmas_tree(7)) 
+print(christmas_tree(8)) 
+print(christmas_tree(9))  
+print(christmas_tree(10)) 
