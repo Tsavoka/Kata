@@ -1,0 +1,25 @@
+# Create a function that takes a string as a parameter and does the
+# following, in this order:
+# Replaces every letter with the letter following it in the alphabet
+# (see note below)
+# Makes any vowels capital
+# Makes any consonants lower case
+# Note: the alphabet should wrap around, so Z becomes A
+# So, for example the string "Cat30" would return "dbU30"
+# (Cat30 --> Dbu30 --> dbU30)
+
+from string import ascii_lowercase as al
+
+def changer(s):
+    string = [al[(al.index(i)+1)%26] if i.isalpha() else i for i in s.lower()]
+    return ''.join(i.upper() if i in 'aoeiu' else i for i in string)
+    
+
+
+
+print(changer('Cat30'))         # 'dbU30'
+print(changer('Alice'))         # 'bmjdf'
+print(changer('sponge1'))       # 'tqpOhf1'
+print(changer('Hello World'))   # 'Ifmmp xpsmE'
+print(changer('dogs'))          # 'Epht'
+print(changer('z'))             # 'A'
