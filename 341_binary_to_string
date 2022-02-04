@@ -1,0 +1,19 @@
+# Write a function that takes in a binary string and returns the
+# equivalent decoded text (the text is ASCII encoded).
+# Each 8 bits on the binary string represent 1 character on the ASCII table.
+# The input string will always be a valid binary string.
+# Characters can be in the range from "00000000" to "11111111" (inclusive)
+# Note: In the case of an empty binary string your function should return
+# an empty string.
+
+import re
+
+
+def binary_to_string(binary):
+    return ''.join(chr(int(i,2))for i in re.findall('.{8}', binary))
+
+
+
+
+print(binary_to_string('0100100001100101011011000110110001101111')) # 'Hello'
+print(binary_to_string('00110001001100000011000100110001'))         # '1011'
