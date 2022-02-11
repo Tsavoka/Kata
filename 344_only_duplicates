@@ -1,0 +1,16 @@
+# Given a string, remove any characters that are unique from the string.
+# Example:
+# input: "abccdefee"
+# output: "cceee"
+
+def only_duplicates(string):
+    return ''.join(i for i in string if string.count(i)>1)
+
+
+
+
+print(only_duplicates('abccdefee'))         # 'cceee'
+print(only_duplicates('hello'))             # 'll'
+print(only_duplicates('colloquial'))        # 'ollol'
+print(only_duplicates('foundersandcoders')) # 'ondersndoders'
+print(only_duplicates('12314256aaeff'))     # '1212aaff'
