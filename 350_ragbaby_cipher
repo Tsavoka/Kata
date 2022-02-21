@@ -1,0 +1,78 @@
+# The ragbaby cipher is a substitution cipher that encodes/decodes a
+# text using a keyed alphabet and their position in the plaintext word
+# they are a part of.
+# To encrypt the text This is an example. with the key cipher, first
+# construct a keyed alphabet:
+# c i p h e r a b d f g j k l m n o q s t u v w x y z
+# Then, number the letters in the text as follows:
+# T h i s   i s   a n   e x a m p l e .
+# 1 2 3 4   1 2   1 2   1 2 3 4 5 6 7     
+# To obtain the encoded text, replace each character of the word with the
+# letter in the keyed alphabet the corresponding number of places to the
+# right of it (wrapping if necessary). Non-alphabetic characters are
+# preserved to mark word boundaries.
+# Our ciphertext is then Urew pu bq rzfsbtj.
+# Task
+# Wirate functions encode and decode which accept 2 parameters:
+# text - string - a text to encode/decode
+# key - string - a key
+# Notes
+# handle lower and upper case in text string
+# key consists of only lowercase characters
+
+from string import ascii_lowercase as al
+import re
+
+
+def new_al(key):
+    new_key = ''
+    for i in key:
+        if i not in new_key:
+            new_key+=i
+    new_al = new_key
+    for i in al:
+        if i not in new_al:
+            new_al += i
+    return new_al
+
+
+def encode(text, key):
+    text = re.findall(r'\w+|\W+',text)
+    new_alp = new_al(key)
+    rez =''
+    for i in text:
+        for num, k in enumerate(i):
+            if k.isupper():
+                rez += new_alp[(new_alp.index(k.lower())+num+1)%26].upper()
+            elif k not in new_alp:
+                rez += k
+            else:
+                rez += new_alp[(new_alp.index(k)+num+1)%26]
+    return rez
+
+    
+def decode(text, key): 
+    text = re.findall(r'\w+|\W+',text)
+    new_alp = new_al(key)
+    rez =''
+    for i in text:
+        for num, k in enumerate(i):
+            if k.isupper():
+                rez += new_alp[(new_alp.index(k.lower())-num-1)%26].upper()
+            elif k not in new_alp:
+                rez += k
+            else:
+                rez += new_alp[(new_alp.index(k)-num-1)%26]
+    return rez
+
+
+
+
+print(encode("cipher","cipher"))                    # "ihrbfj" 
+print(encode("cipher","cccciiiiippphheeeeerrrrr"))  # "ihrbfj"
+print(encode("This is an example.","cipher"))       # "Urew pu bq rzfsbtj." 
+print(encode("This.tHis.thIs.thiS...","cipher"))    # "Urew.uRew.urEw.ureW..." 
+
+print(decode("ihrbfj","cipher"))                    # "cipher" 
+print(decode("Urew pu bq rzfsbtj.","cipher"))       # "This is an example."
+print(decode("Urew.uRew.urEw.ureW...","cipher"))    # "This.tHis.thIs.thiS..."
