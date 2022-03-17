@@ -1,0 +1,30 @@
+# How much is the fish! (- Scooter )
+# The ocean is full of colorful fishes. We as programmers want to know
+# the hexadecimal value of these fishes.
+# Take all hexadecimal valid characters (a,b,c,d,e,f) of the given name
+# and XOR them. Return the result as an integer.
+# The input is always a string, which can contain spaces, upper and lower
+# case letters but no digits.
+# fisHex("redlionfish") -> e,d,f -> XOR -> 12
+
+from functools import reduce
+
+def fisHex(name):
+    name = [int(i,16) for i in name.lower() if i in 'abcdef']
+    return 0 if not name else reduce(lambda x,y: x ^ y, name)
+
+
+
+
+print(fisHex("pufferfish"))     # 1
+print(fisHex("puffers"))        # 14
+print(fisHex("balloonfish"))    # 14
+print(fisHex("blowfish"))       # 4
+print(fisHex("bubblefish"))     # 10
+print(fisHex("globefish"))      # 10
+print(fisHex("swellfish"))      # 1
+print(fisHex("toadfish"))       # 8
+print(fisHex("toadies"))        # 9
+print(fisHex("honey toads"))    # 9
+print(fisHex("sugar toads"))    # 13
+print(fisHex("sea squab"))      # 5
