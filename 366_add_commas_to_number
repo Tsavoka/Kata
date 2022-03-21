@@ -1,0 +1,31 @@
+# Your task is to convert a given number into a string with commas added
+# for easier readability. The number should be rounded to 3 decimal
+# places and the commas should be added at intervals of three digits before
+# the decimal point. There does not need to be a comma at the end of the
+# number.
+# You will receive both positive and negative numbers.
+
+def commas(num):
+    minus = 0
+    if str(num)[0] == '-':
+        num = abs(num)
+        minus = 1
+    num = str(round(num, 3)).split('.')
+    num[0] = ','.join([num[0][::-1][i:i+3] for i in range(0,len(num[0]),3)])[::-1]
+    if len(num) > 1 and num[1] == '0':
+        num.pop()
+    return '-'+'.'.join(num) if minus else '.'.join(num)
+
+
+
+
+print(commas(1))                # "1"
+print(commas(1000))             # "1,000"
+print(commas(100.2346))         # "100.235"
+print(commas(1000000000.23))    # "1,000,000,000.23"
+print(commas(9123.212))         # "9,123.212"
+print(commas(-1))               # "-1"
+print(commas(-1000000.123))     # "-1,000,000.123"
+print(commas(-2000.0))          # "-2,000"
+print(commas(-999.9999))        # "-1,000"
+print(commas(-1234567.0001236)) # "-1,234,567"
