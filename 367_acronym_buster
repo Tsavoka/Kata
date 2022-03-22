@@ -1,0 +1,121 @@
+# Laura really hates people using acronyms in her office and wants to
+# force her colleagues to remove all acronyms before emailing her. She
+# wants you to build a system that will edit out all known acronyms or
+# else will notify the sender if unknown acronyms are present.
+# Any combination of three or more letters in upper case will be considered
+# an acronym. Acronyms will not be combined with lowercase letters, such
+# as in the case of 'KPIs'. They will be kept isolated as a word/words
+# within a string.
+# For any string:
+# All instances of 'KPI' must become "key performance indicators"
+# All instances of 'EOD' must become "the end of the day"
+# All instances of 'TBD' must become "to be decided"
+# All instances of 'WAH' must become "work at home"
+# All instances of 'IAM' must become "in a meeting"
+# All instances of 'OOO' must become "out of office"
+# All instances of 'NRN' must become "no reply necessary"
+# All instances of 'CTA' must become "call to action"
+# All instances of 'SWOT' must become "strengths, weaknesses, opportunities
+# and threats"
+# If there are any unknown acronyms in the string, Laura wants you to return
+# only the message:
+# '[acronym] is an acronym. I do not like acronyms. Please remove them from
+# your email.'
+# So if the acronym in question was 'BRB', you would return the string:
+# 'BRB is an acronym. I do not like acronyms. Please remove them from your
+# email.'
+# If there is more than one unknown acronym in the string, return only the
+# first in your answer.
+# If all acronyms can be replaced with full words according to the above,
+# however, return only the altered string.
+# If this is the case, ensure that sentences still start with capital
+# letters. '!' or '?' will not be used.
+
+ACR = {'KPI': "key performance indicators",
+       'EOD': "the end of the day",
+       'TBD': "to be decided",
+       'WAH': "work at home",
+       'IAM': "in a meeting",
+       'OOO': "out of office",
+       'NRN': "no reply necessary",
+       'CTA': "call to action",
+       'SWOT': "strengths, weaknesses, opportunities and threats"}
+
+import re
+
+
+def acronym_buster(message):
+    for i in re.findall(r'(\b[A-Z]{3,}\b)', message):
+        if i not in ACR.keys():
+            return "{} is an acronym. I do not like acronyms. Please \
+remove them from your email.".format(i)
+    for key in ACR.keys():
+        if key in message:
+            message = message.replace(key, ACR.get(key))
+    return '. '.join(i[0].upper()+i[1:] for i in message.split('. '))
+
+
+
+
+print(acronym_buster("BRB I need to go into a KPI meeting before EOD"))
+# "BRB is an acronym. I do not like acronyms. Please remove them from
+# your email."
+print(acronym_buster("I am IAM so will be OOO until EOD"))
+# "I am in a meeting so will be out of office until the end of the day"
+print(acronym_buster("Going to WAH today. NRN. OOO"))
+# "Going to work at home today. No reply necessary. Out of office"
+print(acronym_buster("We're looking at SMB on SM DMs today"))
+# "SMB is an acronym. I do not like acronyms. Please remove them from
+# your email."
+print(acronym_buster("OOO"))
+# "Out of office"
+print(acronym_buster("KPI"))
+# "Key performance indicators"
+print(acronym_buster("EOD"))
+# "The end of the day"
+print(acronym_buster("TBD"))
+# "To be decided"
+print(acronym_buster("TBD by EOD"))
+# "To be decided by the end of the day"
+print(acronym_buster("BRB I am OOO"))
+# "BRB is an acronym. I do not like acronyms. Please remove them from
+# your email."
+print(acronym_buster("WAH"))
+# "Work at home"
+print(acronym_buster("IAM"))
+# "In a meeting"
+print(acronym_buster("NRN"))
+# "No reply necessary"
+print(acronym_buster("CTA"))
+# "Call to action"
+print(acronym_buster("Hi PAB"))
+# "PAB is an acronym. I do not like acronyms. Please remove them from
+# your email."
+print(acronym_buster("HATDBEA"))
+# "HATDBEA is an acronym. I do not like acronyms. Please remove them from
+# your email."
+print(acronym_buster("LDS"))
+# "LDS is an acronym. I do not like acronyms. Please remove them from your
+# email."
+print(acronym_buster("PB"))
+# "PB"
+print(acronym_buster("FA"))
+# "FA"
+print(acronym_buster("CTA and HTTP"))
+# "HTTP is an acronym. I do not like acronyms. Please remove them from
+# your email."
+print(acronym_buster("SWOT."))
+# "Strengths, weaknesses, opportunities and threats."
+print(acronym_buster("HTTP"))
+# "HTTP is an acronym. I do not like acronyms. Please remove them from
+# your email."
+print(acronym_buster("Please WAH today. KPI on track"))
+# "Please work at home today. Key performance indicators on track"
+print(acronym_buster("The advert needs a CTA. NRN before EOD."))
+# "The advert needs a call to action. No reply necessary before the end of
+# the day."
+print(acronym_buster("I sent you a RFP yesterday."))
+# "RFP is an acronym. I do not like acronyms. Please remove them from your
+# email."
+print(acronym_buster("My SM account needs some work."))
+# "My SM account needs some work."
