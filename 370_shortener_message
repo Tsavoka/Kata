@@ -1,0 +1,62 @@
+# SMS messages are limited to 160 characters. It tends to be irritating,
+# especially when freshly written message is 164 characters long.
+# Your task is to shorten the message to 160 characters, starting from end,
+# by replacing spaces with camelCase, as much as necessary.
+# If all the spaces are replaced but the resulting message is still longer
+# than 160 characters, just return that resulting message.
+# Example 1:
+# Original message (169 chars):
+# No one expects the Spanish Inquisition! Our chief weapon is surprise,
+# fear and surprise; two chief weapons, fear, surprise, and ruthless
+# efficiency! And that will be it.
+# Shortened message (160 chars):
+# No one expects the Spanish Inquisition! Our chief weapon is surprise,
+# fear and surprise; two chief weapons, fear,Surprise,AndRuthlessEfficiency!
+# AndThatWillBeIt.
+# Example 2:
+# Original message (269 chars):
+# SMS messages are limited to 160 characters. It tends to be irritating,
+# especially when freshly written message is 164 characters long. SMS
+# messages are limited to 160 characters. It tends to be irritating,
+# especially when freshly written message is 164 characters long.
+# Shortened message (228 chars):
+# SMSMessagesAreLimitedTo160Characters.ItTendsToBeIrritating,EspeciallyWhen
+# FreshlyWrittenMessageIs164CharactersLong.SMSMessagesAreLimitedTo160
+# Characters.ItTendsToBeIrritating,EspeciallyWhenFreshlyWrittenMessageIs
+# 164CharactersLong.
+
+def shortener(message):
+    if len(message) <= 160:
+        return message
+    if len(message) - message.count(' ') <= 160:
+        message = message.rsplit(' ', (len(message) - 160))
+        return ''.join(i[0].upper()+i[1:] for i in message)
+    else:
+        return ''.join(i[0].upper()+i[1:] for i in message.split(' '))
+
+
+tc1 = ('No one expects the Spanish Inquisition! Our chief weapon is surprise, '
+       'fear and surprise; two chief weapons, fear, surprise, and ruthless efficiency! '
+       'And that will be it.')
+tc1x = ('No one expects the Spanish Inquisition! Our chief weapon is surprise, '
+        'fear and surprise; two chief weapons, fear,Surprise,AndRuthlessEfficiency!'
+        'AndThatWillBeIt.')
+print(shortener(tc1))   # tc1x
+
+tc2 = "This message is already short enough!"
+print(shortener(tc2))   # tc2
+
+tc3 = ('ThereIsNoSpoonThereIsNoSpoonThereIsNoSpoonThereIsNoSpoonThereIsNoSpoon'
+       'ThereIsNoSpoonThereIsNoSpoonThereIsNoSpoonThereIsNoSpoonThereIsNoSpoon'
+       'ThereIsNoSpoonThereIsNoSpoonThereIsNoSpoon')
+print(shortener(tc3))   # tc3
+
+tc4 = ('SMS messages are limited to 160 characters. It tends to be irritating, '
+       'especially when freshly written message is 164 characters long. '
+       'SMS messages are limited to 160 characters. It tends to be irritating, '
+       'especially when freshly written message is 164 characters long.')
+tc4x = ('SMSMessagesAreLimitedTo160Characters.ItTendsToBeIrritating,Especially'
+        'WhenFreshlyWrittenMessageIs164CharactersLong.SMSMessagesAreLimitedTo160'
+        'Characters.ItTendsToBeIrritating,EspeciallyWhenFreshlyWrittenMessageIs'
+        '164CharactersLong.')
+print(shortener(tc4))   # tc4x
