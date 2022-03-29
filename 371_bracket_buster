@@ -1,0 +1,24 @@
+# It's March and you just can't seem to get your mind off brackets.
+# However, it is not due to basketball. You need to extract statements
+# within strings that are contained within brackets.
+# You have to write a function that returns a list of statements that
+# are contained within brackets given a string. If the value entered in
+# the function is not a string, well, you know where that variable should
+# be sitting.
+
+import re
+
+
+def bracket_buster(string):
+    try:
+        return re.findall(r'\[(.*?)\]', string)
+    except:
+        return "Take a seat on the bench."
+
+
+
+
+print(bracket_buster("Don't [pass to Ramone]"))         # ["pass to Ramone"]
+print(bracket_buster(1337))                             # "Take a seat on the bench."
+print(bracket_buster("[I'm] glad y'all [set it]] off")) # ["I'm", 'set it']
+print(bracket_buster('[][]]]][[[[[[][]'))               # ['', '', '[[[[[', ''] 
