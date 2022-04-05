@@ -1,0 +1,35 @@
+# ISBN stands for International Standard Book Number.
+# For more than thirty years, ISBNs were 10 digits long. On January 1,
+# 2007 the ISBN system switched to a 13-digit format. Now all ISBNs are
+# 13-digits long. Actually, there is not a huge difference between them.
+# You can convert a 10-digit ISBN to a 13-digit ISBN by adding the prefix
+# number (978) to the beginning and then recalculating the last, check
+# digit using a fairly simple method.
+# Method
+# Take the ISBN ("1-85326-158-0").
+# Remove the last character, which can be a number or "X".
+# Add the prefix number (978) and a hyphen (-) to the beginning.
+# Take the 12 digits, then alternately multiply each digit from left to right
+# by 1 or 3.
+# Add up all 12 numbers you got.
+# Take the number and perform a modulo 10 division.
+# If the result is 0, the check digit is 0. If it isn't 0, then subtract
+# the result from 10. In this case, that is the check digit.
+# Add the check digit to the end of the result from step 3.
+# Return the 13-digit ISBN in the appropriate format:
+# "prefix number - original ISBN except the last character - check digit"
+# "978 - 1 - 85326 - 158 - 9"
+
+def isbn_converter(isbn):
+    isbn = '978-' + isbn[:-1]
+    last = sum(int(i)*3 if k%2!=0 else int(i) for k,i in enumerate(isbn.replace('-','')))%10
+    return isbn+str(10-last) if last!=0 else isbn+str(last)
+
+
+
+
+print(isbn_converter("1-85326-158-0"))  # "978-1-85326-158-9"
+print(isbn_converter("0-14-143951-3"))  # "978-0-14-143951-8"
+print(isbn_converter("0-02-346450-X"))  # "978-0-02-346450-8"
+print(isbn_converter("963-14-2164-3"))  # "978-963-14-2164-4"
+print(isbn_converter("1-7982-0894-6"))  # "978-1-7982-0894-6"
