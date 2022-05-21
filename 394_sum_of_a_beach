@@ -1,0 +1,20 @@
+# Beaches are filled with sand, water, fish, and sun. Given a string,
+# calculate how many times the words "Sand", "Water", "Fish", and "Sun"
+# appear without overlapping (regardless of the case).
+# Examples
+# sum_of_a_beach("WAtErSlIde")                    ==>  1
+# sum_of_a_beach("GolDeNSanDyWateRyBeaChSuNN")    ==>  3
+
+import re
+
+
+def sum_of_a_beach(beach):
+    return len(re.findall(r'sand|water|fish|sun', beach.lower()))
+
+
+
+
+print(sum_of_a_beach("SanD"))           # 1
+print(sum_of_a_beach("sunshine"))       # 1
+print(sum_of_a_beach("sunsunsunsun"))   # 4
+print(sum_of_a_beach("123FISH321"))     # 1
