@@ -1,0 +1,21 @@
+# Given a string as input, move all of its vowels to the end of the string,
+# in the same order as they were before.
+# Vowels are (in this kata): a, e, i, o, u
+# Note: all provided input strings are lowercase.
+# Examples
+# "day"    ==>  "dya"
+# "apple"  ==>  "pplae"
+
+def move_vowels(s):
+    return ''.join(i for i in s if i not in 'aeiou')+''.join(i for i in s if i in 'aeiou')
+
+
+
+
+print(move_vowels('programming'))   # 'prgrmmngoai'
+print(move_vowels('javascript'))    # 'jvscrptaai'
+print(move_vowels('python'))        # 'pythno'
+print(move_vowels('ruby'))          # 'rbyu'
+print(move_vowels('haskell'))       # 'hskllae'
+print(move_vowels('clojure'))       # 'cljroue'
+print(move_vowels('csharp'))        # 'cshrpa'
