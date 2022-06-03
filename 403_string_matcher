@@ -1,0 +1,23 @@
+# isMatching checks if a string can be created by combining and rearranging
+# the letters of two other strings (not case sensitive).
+# !Spaces will be ignored but special characters and numbers won't match the
+# string and return false.
+# For example:
+# isMatching("email box", "b aIl", "Mo x e") return true
+# but
+# isMatching("bouh", "0b", "uh") return false
+# You need to be able to use all the caracters from the two strings so:
+# isMatching("kata", "kt", "aaa") return false
+
+def is_matching(st, st1, st2):
+    return sorted(st.lower().replace(' ', '')) == sorted((st1+st2).lower().replace(' ', ''))
+
+
+
+
+print(is_matching("bouh", "0", "buh"))                          # False
+print(is_matching("kitten", "t", "eink"))                       # False
+print(is_matching("mentalist", "l.st", "metan"))                # False
+print(is_matching("impressionistic", "isis isi", "precomnt"))   # True
+print(is_matching("email box", "bail", "moxe"))                 # True
+print(is_matching("detail", "tlei", "dai"))                     # False  
