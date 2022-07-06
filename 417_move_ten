@@ -1,0 +1,19 @@
+# Move every letter in the provided string forward 10 letters through the
+# alphabet.
+# If it goes past 'z', start again at 'a'.
+# Input will be a string with length > 0.
+
+from string import ascii_lowercase as al
+
+def move_ten(st):
+    return ''.join(al[(al.index(i)+10)%26] for i in st)
+
+
+
+
+print(move_ten("testcase"))                 # "docdmkco"
+print(move_ten("codewars"))                 # "mynogkbc"
+print(move_ten("exampletesthere"))          # "ohkwzvodocdrobo"
+print(move_ten("returnofthespacecamel"))    # "bodebxypdroczkmomkwov"
+print(move_ten("bringonthebootcamp"))       # "lbsxqyxdrolyydmkwz"
+print(move_ten("weneedanofficedog"))        # "goxoonkxyppsmonyq"
