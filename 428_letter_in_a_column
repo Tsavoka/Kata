@@ -1,0 +1,17 @@
+# Create a function that takes index [0, 8] and a character. It returns a
+# string with columns. Put character in column marked with index.
+# Ex.: index = 2, character = 'B'
+# | | |B| | | | | | |
+#  0 1 2 3 4 5 6 7 8
+# Assume that argument index is integer [0, 8]. Assume that argument
+# character is string with one character.
+
+def build_row_text(index, character):
+    return '|'+'|'.join(character.rjust(index+1, ' ').ljust(9, ' '))+'|'
+
+
+
+
+print(build_row_text(2, 'A'))   # "| | |A| | | | | | |"
+print(build_row_text(0, 'A'))   # "|A| | | | | | | | |"
+print(build_row_text(8, 'A'))   # "| | | | | | | | |A|"
