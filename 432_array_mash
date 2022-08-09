@@ -1,0 +1,28 @@
+# Mash 2 arrays together so that the returning array has alternating
+# elements of the 2 arrays . Both arrays will always be the same length.
+# eg. [1,2,3] + ['a','b','c'] = [1, 'a', 2, 'b', 3, 'c']
+
+def array_mash(a, b):
+    rez = []
+    for i in range(0,len(a)):
+        rez.append(a[i])
+        rez.append(b[i])
+    return rez
+
+
+
+
+print(array_mash([1, 2, 3], ['a', 'b', 'c']))
+# [1, 'a', 2, 'b', 3, 'c']
+print(array_mash([1, 2, 3, 4, 5], ['a', 'b', 'c', 'd', 'e']))
+# [1, 'a', 2, 'b', 3, 'c', 4, 'd', 5, 'e']
+print(array_mash([1, 1, 1, 1], [2, 2, 2, 2]))
+# [1, 2, 1, 2, 1, 2, 1, 2]
+print(array_mash([1, 8, 'hello', 'dog'], ['fish', '2', 9, 10]))
+# [1, "fish", 8, "2", "hello", 9, "dog", 10]
+print(array_mash([None, 4], [None, 'hello']))
+# [None, None, 4, "hello"]
+print(array_mash([1], [2]),)
+# [1, 2]
+print(array_mash(['h', 'l', 'o', 'o', 'l'], ['e', 'l', 'w', 'r', 'd']))
+# ["h", "e", "l", "l", "o", "w", "o", "r", "l", "d"]
