@@ -1,0 +1,19 @@
+# Your task is very simple. Just write a function takes an input string of
+# lowercase letters and returns true/false depending on whether the string
+# is in alphabetical order or not.
+# Examples (input -> output)
+# "kata" -> false ('a' comes after 'k')
+# "ant" -> true (all characters are in alphabetical order)
+
+def alphabetic(s):
+    return ''.join(sorted(s)) == s
+
+
+
+
+print(alphabetic('asd'))        # False
+print(alphabetic('codewars'))   # False
+print(alphabetic('door'))       # True
+print(alphabetic('cell'))       # True
+print(alphabetic('z'))          # True
+print(alphabetic(''))           # True
