@@ -1,0 +1,15 @@
+# Given a string s. You have to return another string such that even-indexed
+# and odd-indexed characters of s are grouped and groups are space-separated
+# (see sample below)
+# Note: 
+# 0 is considered to be an even index. 
+# All input strings are valid with no spaces
+
+def sort_my_string(s):
+    return s[::2] + ' ' + s[1::2]
+
+
+
+
+print(sort_my_string("CodeWars"))       # "CdWr oeas"
+print(sort_my_string("YCOLUE'VREER"))   # "YOU'RE CLEVER"
