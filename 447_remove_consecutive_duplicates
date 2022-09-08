@@ -1,0 +1,22 @@
+# Your task is to remove all consecutive duplicate words from a string,
+# leaving only first words entries. For example:
+# "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma
+# delta"
+# --> "alpha beta gamma delta alpha beta gamma delta"
+
+def remove_consecutive_duplicates(s):
+    if not s:
+        return ''
+    s = s.split()
+    rez = [s[0]]
+    for i in s:
+        if i != rez[-1]:
+            rez.append(i)       
+    return ' '.join(rez)
+
+
+
+
+print(remove_consecutive_duplicates('alpha beta beta gamma gamma gamma delta \
+alpha beta beta gamma gamma gamma delta'))
+# 'alpha beta gamma delta alpha beta gamma delta'
