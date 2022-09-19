@@ -1,0 +1,27 @@
+# You will be given an array that contains two strings. Your job is to
+# create a function that will take those two strings and transpose them,
+# so that the strings go from top to bottom instead of left to right.
+# e.g. transposeTwoStrings(['Hello','World']);
+# should return
+# H W  
+# e o  
+# l r  
+# l l  
+# o d
+# A few things to note:
+# There should be one space in between the two characters
+# You don't have to modify the case (i.e. no need to change to upper or lower)
+# If one string is longer than the other, there should be a space where the
+# character would be
+
+def transpose_two_strings(arr):
+    return '\n'.join(map(lambda x,y: x+' '+y, arr[0].ljust(len(arr[1])), arr[1].ljust(len(arr[0]))))
+
+
+
+
+print(transpose_two_strings(["Hello","World"])) # "H W\ne o\nl r\nl l\no d"
+print(transpose_two_strings(["joey","louise"])) # "j l\no o\ne u\ny i\n  s\n  e"
+print(transpose_two_strings(["a","cat"]))       # "a c\n  a\n  t"
+print(transpose_two_strings(["cat",""]))        # "c  \na  \nt  "
+print(transpose_two_strings(["!a!a!","?b?b"]))  # "! ?\na b\n! ?\na b\n!  "
