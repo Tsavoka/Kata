@@ -1,0 +1,29 @@
+# Write a function that checks if all the letters in the second string are
+# present in the first one at least once, regardless of how many times they
+# appear:
+# ["ab", "aaa"]    =>  true
+# ["trances", "nectar"]    =>  true
+# ["compadres", "DRAPES"]  =>  true
+# ["parses", "parsecs"]    =>  false
+# Function should not be case sensitive, as indicated in example #2. Note:
+# both strings are presented as a single argument in the form of an array.
+
+def letter_check(arr):
+    return all(i in arr[0].lower() for i in arr[1].lower())
+
+
+
+
+print(letter_check(["abcd", "aaa"]))            # True
+print(letter_check(["trances", "nectar"]))      # True
+print(letter_check(["THE EYES", "they see"]))   # True
+print(letter_check(["assert", "staring"]))      # False
+print(letter_check(["arches", "later"]))        # False
+print(letter_check(["dale", "caller"]))         # False
+print(letter_check(["parses", "parsecs"]))      # False
+print(letter_check(["replays", "adam"]))        # False
+print(letter_check(["mastering", "streaming"])) # True
+print(letter_check(["drapes", "compadres"]))    # False
+print(letter_check(["deltas", "slated"]))       # True
+print(letter_check(["deltas", ""]))             # True
+print(letter_check(["", "slated"]))             # False
