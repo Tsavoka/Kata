@@ -1,0 +1,21 @@
+# The borrowers are tiny tiny fictional people. As tiny tiny people they
+# have to be sure they aren't spotted, or more importantly, stepped on.
+# As a result, the borrowers talk very very quietly. They find that capitals
+# and punctuation of any sort lead them to raise their voices and put them
+# in danger.
+# The young borrowers have begged their parents to stop using caps and
+# punctuation.
+# Change the input text s to new borrower speak. Help save the next generation!
+
+from string import ascii_lowercase as al
+
+
+def borrow(s):
+    return ''.join(i for i in s.lower() if i in al)
+
+
+
+
+print(borrow('WhAt! FiCK! DaMn CAke?')) # 'whatfickdamncake'
+print(borrow('THE big PeOpLE Here!!'))  # 'thebigpeoplehere'
+print(borrow('i AM a TINY BoY!!'))      # 'iamatinyboy'
