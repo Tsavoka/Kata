@@ -1,0 +1,24 @@
+# You need to write a function, that returns the first non-repeated
+# character in the given string.
+# If all the characters are unique, return the first character of the string.
+# If there is no unique character, return null in JS or Java, and None in
+# Python.
+# You can assume, that the input string has always non-zero length.
+# Example
+# first_non_repeated("test") # returns "e"
+# first_non_repeated("teeter") # returns "r"
+# first_non_repeated("trend") # returns "t"
+# first_non_repeated("aabbcc") # returns None
+
+def first_non_repeated(s):
+    try:
+        return [i for i in s if s.count(i)==1][0]
+    except:
+        return None
+
+
+
+
+print(first_non_repeated("test"))               # 'e'
+print(first_non_repeated("teeter"))             # 'r'
+print(first_non_repeated("1122321235121222"))   # '5'
