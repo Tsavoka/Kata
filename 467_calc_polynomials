@@ -1,0 +1,62 @@
+# You will be given a list with the coefficients of a polynomial. Look the
+# following order in both:
+# P(x) =       6x³ + 3x² + 5x -4
+# coefficients =  [ 6,   3,    5, -4]
+# Your task is to express the polynomial like a string with its value for
+# a certain determinate x:
+# [6, 3, 5, -4], 4 returns "For 6*x^3 + 3*x^2 + 5*x - 4 with x = 4 the
+# value is 448"
+# If we have some coefficients equals to 0, its corresponding term will not
+# be seen.
+# [2, 0, 5, -6, 4, 0], 2 returns "For 2*x^5 + 5*x^3 - 6*x^2 + 4*x with
+# x = 2 the value is 88"
+# An interesting case will be when the first coefficient is equal to -1
+# [-1, -6, 28, 79], 35 returns "For -x^3 - 6*x^2 + 28*x + 79 with x = 35
+# the value is -49166"
+# The following answer will be considered incorrect:
+# "For -1x^3 - 6*x^2 + 28*x + 79 with x = 35 the value is -49166"
+# You will not receive an empty list and the values for the varible x will
+# be valid for all the cases.
+
+def calc_poly(pol_list, x):
+    rez = 0
+    answ = []
+    counter = len(pol_list)-1
+    for i in pol_list:
+        rez += i*(x**counter)
+        if i < 0:
+            i = abs(i)
+            answ.append('-')
+        else:
+            answ.append('+')
+        if i == 0:
+            counter -= 1
+            answ.pop()
+            continue
+        if counter == 0:
+            answ.append('{}'.format(i))
+        elif counter == 1:
+            if i == 1:
+                answ.append('x')
+            else:
+                answ.append('{}*x'.format(i))
+        else:
+            if i == 1:
+                answ.append('x^{}'.format(counter))
+            else:
+                answ.append('{}*x^{}'.format(i,counter))
+        counter -= 1
+    answ = ' '.join(answ).strip('+ ')
+    if answ[0] == '-':
+        answ = answ[:1]+answ[2:]
+    return 'For {} with x = {} the value is {}'.format(answ, x, rez)
+
+
+
+
+print(calc_poly([6, 3, 5, -4], 4))
+# "For 6*x^3 + 3*x^2 + 5*x - 4 with x = 4 the value is 448"
+print(calc_poly([2, 0, 5, -6, 4, 0], 2))
+# "For 2*x^5 + 5*x^3 - 6*x^2 + 4*x with x = 2 the value is 88"
+print(calc_poly([-1, -6, 28, 79], 35))
+# "For -x^3 - 6*x^2 + 28*x + 79 with x = 35 the value is -49166"
