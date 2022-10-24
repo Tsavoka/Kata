@@ -1,0 +1,18 @@
+# Create a function that converts a given ASCII string to its hexadecimal
+# SHA-256 hash.
+# "Hello World!" =>
+# "7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069"
+
+import hashlib
+
+
+def to_sha256(s):
+    return hashlib.sha256(s.encode()).hexdigest()
+
+
+
+
+print(to_sha256("Hello World!"))
+# "7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069"
+print(to_sha256("Codewars"))
+# "aeb7c211fae7fff7546d87886a7d3ace8e9ebc30bb36062dfec7c92c78a3e1db"
