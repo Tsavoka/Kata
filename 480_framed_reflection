@@ -1,0 +1,27 @@
+# You are given a message (text) that you choose to read in a mirror
+# (weirdo). Return what you would see, complete with the mirror frame.
+# Example:
+# 'Hello World'
+# would give:
+#    "*********\n
+#     * olleH *\n
+#     * dlroW *\n
+#     *********"
+# Words in your solution should be left-aligned.
+
+def mirror(text):
+    text = [i[::-1] for i in text.split()]
+    max_word = max(len(i) for i in text)
+    border = ['*'*(max_word+4)]
+    words = ['* {} *'.format(i.ljust(max_word)) for i in text]
+    return '\n'.join(border+words+border)
+    
+
+
+
+print(mirror("Hello World"))
+# "*********\n* olleH *\n* dlroW *\n*********"
+print(mirror("Codewars"))
+# "************\n* srawedoC *\n************" 
+print(mirror("emosewA !ataK"))
+# "***********\n* Awesome *\n* Kata!   *\n***********"
