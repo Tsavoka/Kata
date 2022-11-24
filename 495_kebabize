@@ -1,0 +1,23 @@
+# Modify the kebabize function so that it converts a camel case string into
+# a kebab case.
+# kebabize('camelsHaveThreeHumps') // camels-have-three-humps
+# kebabize('camelsHave3Humps') // camels-have-humps
+# Notes:
+# the returned string should only contain lowercase letters
+
+import re
+
+def kebabize(string):
+    string = ''.join(i for i in string if i.isalpha())
+    return '-'.join(i.lower() for i in re.split(r'([A-Z][a-z]*)', string) if i.isalpha())
+
+
+
+
+print(kebabize('myCamelCasedString'))   # 'my-camel-cased-string'
+print(kebabize('myCamelHas3Humps'))     # 'my-camel-has-humps'
+print(kebabize('SOS'))                  # 's-o-s'
+print(kebabize('42'))                   # ''
+print(kebabize('CodeWars'))             # 'code-wars'
+print(kebabize('duwH2fxkDaxzMAE7phoQVenao8hP7K0zTKQrCUiy'))
+# 'duw-hfxk-daxz-m-a-epho-q-venaoh-p-kz-t-k-qr-c-uiy'
