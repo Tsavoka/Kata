@@ -1,0 +1,25 @@
+# Write a function that solves an algebraic expression given as a string.
+# The expression can include only sums and products.
+# The numbers in the expression are in standard notation (NOT scientific).
+# In contrast, the function should return a string with the calculated value
+# given in scientific notation with 5 decimal digits.
+# Example:
+# strexpression = "5 * 4 + 6"
+# sum_prod(strexpression) = "2.60000e+01"
+
+import sys
+
+
+sys.setrecursionlimit(1000)     # да, автор хочет запретить нам получать
+                                # фан от каты не так, как он этого хотел
+
+def sum_prod(strexpression):
+    return  '{:.5e}'.format(eval(strexpression))
+    
+
+
+
+print(sum_prod("5*4+6"))        # '2.60000e+01'
+print(sum_prod("5+4*6"))        # '2.90000e+01'
+print(sum_prod("3*8+6*5"))      # '5.40000e+01'
+print(sum_prod("5*8+6*3*2"))    # '7.60000e+01'
