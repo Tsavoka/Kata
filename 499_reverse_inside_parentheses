@@ -1,0 +1,36 @@
+# Given a string, return the minimal number of parenthesis reversals needed
+# to make balanced parenthesis.
+# For example:
+# solve(")(") = 2 Because we need to reverse ")" to "(" and "(" to ")".
+# These are 2 reversals. 
+# solve("(((())") = 1 We need to reverse just one "(" parenthesis to make
+# it balanced.
+# solve("(((") = -1 Not possible to form balanced parenthesis. Return -1.
+# Parenthesis will be either "(" or ")".
+
+def solve(s):
+    if len(s)%2:
+        return -1
+    counter = 0
+    rez = []
+    for i in s:
+        if i == '(':
+            rez.append(i)
+        else:
+            try:
+                if rez[-1] == '(':
+                    rez.pop()
+            except:
+                rez.append('(')
+                counter += 1
+    return counter + len(rez)//2
+    
+
+
+
+
+print(solve(")()("))                # 2
+print(solve("((()"))                # 1
+print(solve("((("))                 # -1
+print(solve("())((("))              # 3
+print(solve("(()))()))))()()("))    # 4
