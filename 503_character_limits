@@ -1,0 +1,68 @@
+# Cara is applying for several different jobs. The online application forms
+# ask her to respond within a specific character count. Cara needs to check
+# that her answers fit into the character limit.
+# Annoyingly, some application forms count spaces as a character, and some
+# don't.
+# Your challenge:
+# Write Cara a function charCheck() with the arguments:
+# "text": a string containing Cara's answer for the question
+# "max": a number equal to the maximum number of characters allowed in the
+# answer
+# "spaces": a boolean which is True if spaces are included in the character
+# count and False if they are not
+# The function charCheck() should return an array: [True, "Answer"] , where
+# "Answer" is equal to the original text, if Cara's answer is short enough.
+# If her answer "text" is too long, return an array: [False, "Answer"]. The
+# second element should be the original "text" string truncated to the length
+# of the limit.
+# When the "spaces" argument is False, you should remove the spaces from the
+# "Answer".
+
+def charCheck(text, mx, spaces):
+    if spaces:
+        return [len(text) <= mx, text[0:mx]]
+    else:
+        text = ''.join(text.split())
+        return [len(text) <= mx, text[0:mx]]
+
+
+
+
+print(charCheck("I am applying for the role of Base Manager on \
+Titan.", 60, True))
+# [True, "I am applying for the role of Base Manager on Titan."]
+print(charCheck("I am looking to relocate to the vicinity of Saturn for \
+family reasons.", 70, True))
+# [True, "I am looking to relocate to the vicinity of Saturn for family
+# reasons."]
+print(charCheck("As Deputy Base Manager on Phobos for five Martian years, I \
+have significant relevant experience.", 90, False))
+# [True, "AsDeputyBaseManageronPhobosforfiveMartianyears,Ihavesignificantre
+# levantexperience."]
+print(charCheck("A challenging career moment came with the rapid depletion \
+of water supplies on Phobos.", 80, False))
+# [True,"Achallengingcareermomentcamewiththerapiddepletionofwatersupplieson
+# Phobos."]	
+print(charCheck("Despite what some have suggested, this had nothing to do \
+with the decorative fountains I had installed in my private \
+quarters.", 100, False))
+# [False,"Despitewhatsomehavesuggested,thishadnothingtodowiththedecorative
+# fountainsIhadinstalledinmyprivatequa."]
+print(charCheck("Anyway what sort of society would we be if a Deputy Base \
+Manager couldn't allow herself a few luxuries?", 70, False))
+# [False,"AnywaywhatsortofsocietywouldwebeifaDeputyBaseManagercouldn'tallow
+# herse"]
+print(charCheck("I swiftly resolved the situation with base-wide water \
+rationing.", 60, True))
+# [False, "I swiftly resolved the situation with base-wide water ration"]
+print(charCheck("After four Martian weeks of not washing, several \
+colonists complained of the smell.", 80, True))
+# [False, "After four Martian weeks of not washing, several colonists
+# complained of the sme"]
+print(charCheck("But, as I pointed out, anyone complaining about standing \
+downwind was lying. There was no wind.", 75, True))
+# [False, "But, as I pointed out, anyone complaining about standing downwind
+# was lying"]
+print(charCheck("I have no notice period on Phobos. I can start \
+immediately.", 50, True))
+# [False, "I have no notice period on Phobos. I can start imm"]
