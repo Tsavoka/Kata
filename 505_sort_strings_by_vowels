@@ -1,0 +1,49 @@
+# The goal of this Kata is to write a function that will receive an array
+# of strings as its single argument, then the strings are each processed and
+# sorted (in desending order) based on the length of the single longest
+# sub-string of contiguous vowels ( aeiouAEIOU ) that may be contained
+# within the string. The strings may contain letters, numbers, special
+# characters, uppercase, lowercase, whitespace, and there may be (often will
+# be) multiple sub-strings of contiguous vowels. We are only interested in
+# the single longest sub-string of vowels within each string, in the input
+# array.
+# Example:
+# str1 = "what a beautiful day today"
+# str2 = "it's okay, but very breezy"
+# When the strings are sorted, str1 will be first as its longest sub-string
+# of contiguous vowels "eau" is of length 3, while str2 has as its longest
+# sub-string of contiguous vowels "ee", which is of length 2.
+# If two or more strings in the array have maximum sub-strings of the same
+# length, then the strings should remain in the order in which they were
+# found in the orginal array.
+
+import re
+
+
+def sort_strings_by_vowels(seq):
+    vowels = [(i,max(re.findall(r'[aoieuAOIEU]+', i,re.DOTALL), key=len, default='')) for i in seq]
+    return [i[0] for i in sorted(vowels, key=lambda x: len(x[1]), reverse=True)]
+    
+
+
+
+print(sort_strings_by_vowels(["aa","eee","oo","iiii"]))
+# ["iiii","eee","aa","oo"])
+print(sort_strings_by_vowels(["a","e","ii","ooo","u"]))
+# ["ooo","ii","a","e","u"])
+print(sort_strings_by_vowels(["ioue","ee","uoiea"]))
+# ["uoiea", "ioue","ee"])
+print(sort_strings_by_vowels(["high","day","boot"]))
+# ["boot","high","day"])
+print(sort_strings_by_vowels(["none","uuu","Yuuuge!!"]))
+# ["uuu","Yuuuge!!","none"])                                  
+print(sort_strings_by_vowels(["AIBRH","","YOUNG","GREEEN"]))
+# ["GREEEN","AIBRH","YOUNG",""])
+print(sort_strings_by_vowels(["jyn","joan","jimmy","joey"]))
+# ["joan","joey","jimmy","jyn"])
+print(sort_strings_by_vowels(["uijijeoj","lkjlkjww2","iiutrqy"]))
+# ["iiutrqy","uijijeoj","lkjlkjww2"])
+print(sort_strings_by_vowels(["how about now","a beautiful trio of"]))
+# ["a beautiful trio of","how about now"])
+print(sort_strings_by_vowels(["every","bataux","is","waaaay","loose"]))
+# ["waaaay","bataux","loose","every","is"])
