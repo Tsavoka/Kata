@@ -1,0 +1,69 @@
+# The code provided has a method hello which is supposed to show only those
+# attributes which have been explicitly set. Furthermore, it is supposed to
+# say them in the same order they were set.
+# But it's not working properly.
+# Notes
+# There are 3 attributes
+# name
+# age
+# sex ('M' or 'F')
+# When the same attribute is assigned multiple times the hello method shows
+# it only once. If this happens the order depends on the first assignment of
+# that attribute, but the value is from the last assignment.
+# Examples
+# Hello.
+# Hello. My name is Bob. I am 27. I am male.
+# Hello. I am 27. I am male. My name is Bob.
+# Hello. My name is Alice. I am female.
+# Hello. My name is Batman.
+# Task
+# Fix the code so we can all go home early.
+
+class Dinglemouse(object):
+    
+    def __init__(self):
+        self.name = None
+        self.sex  = None
+        self.age  = None
+        self.data = []
+    
+    def setAge(self, age):
+        self.age = age
+        gr = ' I am {2}.'
+        if gr not in self.data:
+            self.data.append(gr)
+        return self
+        
+    def setSex(self, sex):
+        self.sex = sex
+        gr = ' I am {1}.'
+        if gr not in self.data:
+            self.data.append(gr)
+        return self
+        
+    def setName(self, name):
+        self.name = name
+        gr = ' My name is {0}.'
+        if gr not in self.data:
+            self.data.append(gr)
+        return self
+        
+    def hello(self):
+        return 'Hello.' + (''.join(i for i in self.data)).format(self.name, "male" if self.sex=='M' else "female", self.age)
+
+
+
+
+dm = Dinglemouse().setAge(27).setSex('M').setName("Bob")
+expected = "Hello. I am 27. I am male. My name is Bob."
+print(dm.hello())       # expected
+
+
+dm = Dinglemouse().setName("Jane").setSex('M').setSex('F').setName("Alice")
+expected = "Hello. My name is Alice. I am female."
+print(dm.hello())       # expected
+
+
+dm = Dinglemouse().setName("Batman")
+expected = "Hello. My name is Batman."
+print(dm.hello())       # expected
