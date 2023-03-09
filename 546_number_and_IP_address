@@ -1,0 +1,36 @@
+# An IP address contains four numbers(0-255) and separated by dots. It can
+# be converted to a number by this way:
+# Given a string s represents a number or an IP address. Your task is to
+# convert it to another representation(number to IP address or IP address
+# to number).
+# You can assume that all inputs are valid.
+# Example IP address: 10.0.3.193
+# Convert each number to a 8-bit binary string (may needs to pad leading
+# zeros to the left side):
+# 10  -->  00001010
+# 0   -->  00000000
+# 3   -->  00000011
+# 193 -->  11000001
+# Combine these four strings: 00001010 00000000 00000011 11000001 and then
+# convert them to a decimal number: 167773121
+# Input/Output
+# [input] string s
+# A number or IP address in string format.
+# [output] a string
+# A converted number or IP address in string format.
+# Example
+# For s = "10.0.3.193", the output should be "167773121".
+# For s = "167969729", the output should be "10.3.3.193".
+
+def number_and_IP_address(s):
+    if '.' in s:
+        return str(int((''.join(bin(int(i))[2:].zfill(8) for i in s.split('.'))),2))
+    else:
+        rez = bin(int(s))[2:].zfill(32)
+        return '.'.join(str(int(i,2)) for i in (rez[i:i+8] for i in range(0, len(rez), 8)))
+
+
+
+
+print(number_and_IP_address("10.0.3.193"))  # "167773121"
+print(number_and_IP_address("167969729"))   # "10.3.3.193"
