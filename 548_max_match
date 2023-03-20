@@ -1,0 +1,116 @@
+VALID_WORDS = {'something', 'for', 'buy', 'isnt', 'place', 'shake', 'drive',
+               'why', 'alive', 'one', 'rather', 'here', 'book', 'id', 'persons',
+               'stars', 'piece', 'metaphysics', 'lets', 'up', 'she', 'class',
+               'realise', 'this', 'we', 'broken', 'approaches', 'at', 'person',
+               'made', 'someone', 'its', 'pretty', 'tomato', 'tom', 'roads',
+               'pie', 'fine', 'car', '1234', 'harder', 'know', 'japanese',
+               'older', 'decorated', 'shooter', 'bird', 'combined',
+               'throughout', 'short', 'door', 'taste', 'compensates', 'too',
+               'information', 'clear', 'small', 'your', 'likes', 'see', 'any',
+               'once', 'lease', 'find', 'worm', 'been', 'green', 'me', 'ran',
+               'nancy', 'please', 'them', 'cool', 'step', 'later', 'rent',
+               'cookies', 'ass', 'today', 'middle', 'friday', 'fact', 'striped',
+               'midsent', 'quick', 'asia', 'sometimes', 'conditions', 'on',
+               'christmas', 'arrived', 'first', 'they', 'adventure', 'colors',
+               'our', 'lake', 'tuna', 'proud', 'sundays', 'sky', 'right',
+               'off', 'in', 'greatly', 'oh', 'lizard', 'returned', 'red',
+               'bunny', 'is', '1', 'crashing', 'spotted', 'all', 'laptop',
+               'malls', 'over', 'share', 'ill', 'different', 'didnt', 'people',
+               'comes', 'body', 'does', 'country', 'plays', 'happy', 'back',
+               'mind', 'gem', 'goodbye', 'or', 'paints', 'places', 'list',
+               'leave', 'sunburnt', 'discovered', 'research', 'amount', 'can',
+               'wow', 'vacant', 'seats', 'alone', 'milk', 'were', 'wasnt',
+               'otherwise', 'windows', 'yet', 'either', 'hear', 'dog', 'how',
+               'donation', 'syrup', 'saw', 'maple', 'ever', 'purple', 'ruin',
+               'sugar', 'poker', 'stop', 'not', 'day', 'her', 'check', 'never',
+               'thing', 'story', 'pets', 'going', 'of', 'random', 'make',
+               'years', 'under', 'tomorrow', 'pastels', 'checked', '1111',
+               'visited', 'town', 'bread', 'would', 'records', 'same', 'like',
+               'lot', 'many', 'hasnt', 'mary', 'glittering', 'when', 'babies',
+               'human', 'with', 'detailed', 'mum', 'white', 'apple', 'i',
+               'do', 'youre', 'meet', 'quite', 'stranger', 'waves', 'an',
+               'kite', 'thinking', 'diary', 'busy', 'went', 'outside', 'movie',
+               'next', 'coming', 'a', 'sentence', 'joe', 'after', 'store',
+               'need', 'revels', 'what', 'have', 'always', 'him', 'calories',
+               'just', 'life', 'weeks', 'things', 'by', 'said', 'he', 'asked',
+               'speaks', 'year', 'memory', 'want', 'blog', 'did', 'doll',
+               'may', 'still', 'wait', 'gotten', 'suit', 'clean', 'toasted',
+               'everything', 'borrowed', 'vividly', 'rain', 'subsequently',
+               'hes', 'hour', 'flew', 'long', 'cheese', 'floor', 'night', 'my',
+               'other', 'until', 'us', 'recently', 'real', 'everyone', 'test',
+               'get', 'loss', 'good', 'early', 'voice', 'hands', 'love', 'read',
+               'paper', 'together', 'luck', 'else', 'bold', 'works', 'away',
+               'glass', 'take', 'favorite', 'be', 'from', 'so', 'high', '4',
+               'that', 'there', 'fairy', 'teeth', 'anyone', 'no', 'very',
+               'legless', 'eaters', 'within', 'sounds', 'will', 'cheat', 'old',
+               'go', 'money', 'open', 'piano', 'freezer', 'least', 'couldnt',
+               'fence', 'shop', 'better', 'and', 'really', 'brown', 'fish',
+               'italy', 'eat', 'environment', 'clock', 'am', 'folded',
+               'promotion', 'you', 'wrote', 'nor', 'join', 'more', 'tooth',
+               'above', 'authority', 'best', 'think', 'perhaps', 'ice',
+               'asking', 'ended', 'tries', 'chocolate', 'laugh', 'abstraction',
+               'learning', 'buttered', 'however', 'shut', 'stole', 'reason',
+               'impassable', 'little', 'recommend', 'saying', 'combining',
+               'way', 'dessert', 'sauce', 'it', 'house', 'nickname', 'jobs',
+               'his', 'free', 'twinkling', 'anyway', 'wont', 'officiates',
+               'wednesday', 'dont', 'party', 'donkey', 'cows', 'again', 'each',
+               'time', 'slammed', 'where', 'out', 'shore', 'neatly', 'help',
+               'appreciated', 'home', 'three', 'getting', 'to', 'but', 'yeah',
+               'last', 'used', 'blue', 'work', 'june', 'susan', 'math',
+               'passed', 'says', 'sick', 'eating', 'sight', 'if', 'rock',
+               'exciting', 'as', 'table', 'loud', 'turned', 'cats', 'jumps',
+               'noisy', 'bad', 'having', 'should', 'sentences', 'the',
+               'playing', 'attendance', 'initially', 'cream', 'music',
+               'english', 'camel', 'are', 'sure', 'now', 'has', 'true',
+               'baggage', 'try', 'river', 'dentist', 'consumption', 'lazy',
+               'pig', 'hand', 'walk', 'clocks', 'than', 'coherent', 'velocity',
+               'hump', 'come', 'frame', 'easter', 'ago', 'only', 'front',
+               'hurry', 'song', 'fox', 'sandwiches', 'start', 'yourself',
+               'two', 'roof', 'longer', 'dark', 'great', 'advised', 'onesie',
+               'about', 'got', 'counting', 'told', 'was', 'remember', 'enough',
+               'unique', 'young', 'popcorn', 'completely', 'thought', 'ends',
+               'spend', 'room', 'meal', 'africa', 'often', 'lovely',
+               'yesterday', 'had', 'plan', 'handkerchief', 'gods', 'writing',
+               'currently', 'mysterious', 'let', 'werent', 'school',
+               'sixtyfour', 'caramel', 'stay', 'thoughts', 'letter'}
+
+# Some languages like Chinese, Japanese, and Thai do not have spaces between
+# words. However, most natural languages processing tasks like part-of-speech
+# tagging require texts that have segmented words. A simple and reasonably
+# effective algorithm to segment a sentence into its component words is
+# called "MaxMatch".
+# MaxMatch starts at the first character of a sentence and tries to find the
+# longest valid word starting from that character. If no word is found, the
+# first character is deemed the longest "word", regardless of its validity.
+# In order to find the rest of the words, MaxMatch is then recursively invoked
+# on all of the remaining characters until no characters remain. A list of all
+# of the words that were found is returned.
+# So for the string "happyday", "happy" is found because "happyday" is not a
+# valid word, nor is "happyda", nor "happyd". Then, MaxMatch is called on
+# "day", and "day" is found. The output is the list ["happy", "day"] in that
+# order.
+# Write max_match, which takes an alphanumeric, spaceless, lowercased String
+# as input and returns a List of Strings of all the words found, in the order
+# they were found. All valid words are in the Set VALID_WORDS, which only
+# contains around 500 English words.
+# Note: This algorithm is simple and operates better on Chinese text, so
+# accept the fact that some words will be segmented wrongly.
+
+
+def max_match(sentence):
+    rez = []
+    while sentence:
+        words = [sentence[0:i] for i in range(len(sentence),0,-1)]
+        for i in words:
+            if i in VALID_WORDS:
+                rez.append(i)
+                break
+            if i == words[-1]:
+                rez.append(i)
+        sentence = sentence[len(rez[-1]):]
+    return rez
+
+
+
+print(max_match("goodluck"))    # ['good','luck']
+print(max_match("ewingsa"))     # ['e','w','in','g','s','a']
