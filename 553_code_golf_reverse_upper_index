@@ -1,0 +1,27 @@
+# In this Golfing Kata, you are going to do simple things:
+# Reverse a string; then
+# Return the index of first uppercase letter.
+# Input:
+# You are going to get a string which consists only uppercase and lowercase
+# English letters. It will have at least one uppercase letter.
+# Output:
+# Return the index of first uppercase letter of reversed string.
+# Examples:
+# input --> output
+# f("HelloWorld") --> 4
+# f("Codewars")  --> 7
+# f("X") --> 0
+# f("findX") --> 0
+# Golfing Message:
+# The length of your code should be less or equals to 44.
+# Your code should be one line.
+# The length of the reference solution is 37.
+
+f=lambda s:s[-1].islower()and 1+f(s[:-1])
+
+
+
+print(f("HelloWorld"))  # 4
+print(f("Codewars"))    # 7
+print(f("X"))           # 0
+print(f("findX"))       # 0
