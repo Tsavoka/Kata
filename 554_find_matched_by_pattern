@@ -1,0 +1,40 @@
+# You are given a string with three lowercase letters ( pattern ).
+# Implement a function find_matched_by_pattern(pattern) that returns a
+# predicate function, testing a string input and returning true if the
+# string is matching the pattern, false otherwise.
+# A word is considered a match for a given pattern if the first occurrence
+# of each letter of the pattern is found in the same order in the word. If a
+# character in the pattern is duplicated, the same logic applies further.
+# The pattern will always be a string of size 3.
+# Example of use:
+# predicate = find_matched_by_pattern('acs')
+# predicate('access') # True
+# predicate('sacrifice') # False 
+
+
+def find_matched_by_pattern(pattern):
+    def predicate(word, pattern=pattern):
+        for i in word:
+            if i == pattern[0]:
+                pattern = pattern[1:]
+            elif i in pattern:
+                break
+            if not pattern:
+                return True
+        return False
+    return predicate
+
+
+
+
+predicate = find_matched_by_pattern('acs')
+print(predicate('access'))      # True
+print(predicate('sacrifice'))   # False
+
+predicate = find_matched_by_pattern('acc')
+print(predicate('access'))      # True
+print(predicate('sacrifice'))   # True
+
+predicate = find_matched_by_pattern('vvl')
+print(predicate('veturvel'))    # True
+print(predicate('velivel'))     # False
