@@ -1,0 +1,39 @@
+# There're two list:
+# [5, 1, 3, 2, 4]
+# [4, 5, 2, 1, 3]
+# Your goal is to change the first list to the second list
+# Each modification consists of choosing a single number and moving it some
+# number of positions to the left.
+# Your task is to write a function min_move, which has 2 argument a and
+# b(list) and calculate the minimum moves to change the first list to the
+# second list.
+# Example
+# min_move([1, 3, 5, 2, 4], [1, 2, 3, 4, 5]) = 2
+#     1, 3, 5, 2, 4
+# --> 1, 3, 4, 5, 2  # The position of 4 is changed
+# --> 1, 2, 3, 4, 5  # The position of 2 is changed, and now it's in correct
+# order.
+# Notes
+#  Numbers in the list are numbered from 1 to len(A).
+#  Numbers will never repeat in the two list, all lists are valid
+#  Test range: 5 <= len(a), len(b) <= 50000, you may need to consider the
+# performance.
+
+
+def min_move(a, b):
+    count = 0
+    while a:
+        temp = b.pop()
+        if not temp in a:
+            continue
+        ind_temp = a.index(temp)
+        count += len(a) - ind_temp - 1
+        a = a[:ind_temp]            
+    return count
+
+
+
+
+print(min_move([1, 3, 5, 2, 4], [1, 2, 3, 4, 5]))   # 2
+print(min_move([1, 2, 3, 4, 5], [1, 2, 3, 4, 5]))   # 0
+print(min_move([1, 2, 3, 4, 5], [5, 4, 3, 2, 1]))   # 4
