@@ -1,0 +1,26 @@
+# If string has more than one neighboring dashes(e.g. --) replace they with one dash(-).
+# Dashes are considered neighbors even if there is some whitespace between them.
+# Example
+# For str = "we-are- - - code----warriors.-"
+# The result should be "we-are- code-warriors.-"
+
+import re
+
+
+def replace_dashes_as_one(s):
+    return re.sub('-[\s-]*-', '-', s)
+
+
+
+
+print(replace_dashes_as_one("we-are- - - code----warriors.-"))
+# "we-are- code-warriors.-"
+print(replace_dashes_as_one("a---b- - -c"))
+# "a-b-c"
+print(replace_dashes_as_one("a------"))
+# "a-"
+print(replace_dashes_as_one("Lorem - ipsum- - - dolor sit amet, consectetur adipiscing elit. Praesent \
+tristique lectus non erat dapibus tincidunt. Integer non nibh fermentum, cursus-diam -------pharetra, \
+mattis--risus.-------"))
+# "Lorem - ipsum- dolor sit amet, consectetur adipiscing elit. Praesent tristique lectus
+# non erat dapibus tincidunt. Integer non nibh fermentum, cursus-diam -pharetra, mattis-risus.-"
