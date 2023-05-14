@@ -1,0 +1,36 @@
+# For a given string s find the character c (or C) with longest 
+# consecutive repetition and return:
+# (c, l)
+# where l (or L) is the length of the repetition. If there are two 
+# or more characters with the same l return the first in order of 
+# appearance.
+# For empty string return:
+# ('', 0)
+
+def longest_repetition(chars):
+    if not chars:
+        return '', 0
+    rez = []
+    temp = ''
+    for i in chars:
+        if not temp:
+            temp += i
+        elif temp[-1] == i:
+            temp += i
+        elif temp[-1] != i:
+            rez.append(temp)
+            temp = i
+    rez.append(temp)
+    rez = max(rez, key=len)
+    return rez[0], len(rez)
+
+
+
+
+print(longest_repetition("aaaabb"))         # ('a', 4)
+print(longest_repetition("bbbaaabaaaa"))    # ('a', 4)
+print(longest_repetition("cbdeuuu900"))     # ('u', 3)
+print(longest_repetition("abbbbb"))         # ('b', 5)
+print(longest_repetition("aabb"))           # ('a', 2)
+print(longest_repetition("ba"))             # ('b', 1)
+print(longest_repetition(""))               # ('', 0)
