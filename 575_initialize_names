@@ -1,0 +1,24 @@
+# Some people just have a first name; some people have first
+# and last names and some people have first, middle and last
+# names.
+# You task is to initialize the middle names (if there is any).
+# Examples
+# 'Jack Ryan'                   => 'Jack Ryan'
+# 'Lois Mary Lane'              => 'Lois M. Lane'
+# 'Dimitri'                     => 'Dimitri'
+# 'Alice Betty Catherine Davis' => 'Alice B. C. Davis'
+
+
+def initialize_names(name):
+    name = name.split(' ')
+    if len(name) <= 2:
+        return ' '.join(name)
+    return ' '.join([name[0], ' '.join(i[0]+'.' for i in name[1: -1]), name[-1]])
+
+
+
+
+print(initialize_names('Jack Ryan'))                    # 'Jack Ryan'
+print(initialize_names('Lois Mary Lane'))               # 'Lois M. Lane'
+print(initialize_names('Dimitri'))                      # 'Dimitri'
+print(initialize_names('Alice Betty Catherine Davis'))  # 'Alice B. C. Davis'
