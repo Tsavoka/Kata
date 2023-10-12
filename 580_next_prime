@@ -1,0 +1,27 @@
+# Get the next prime number!
+# You will get a numbern (>= 0) and your task is to find
+# the next prime number.
+# Make sure to optimize your code: there will numbers tested
+# up to about 10^12.
+# Examples
+# 5   =>  7
+# 12  =>  13
+
+def is_prime(n):
+    return n > 1 and all(n % d for d in range(2, int(n**.5) + 1))
+
+def next_prime(n):
+    n += 1
+    while not is_prime(n):
+        n += 1
+    return n
+
+
+
+
+print(next_prime(0))    # 2
+print(next_prime(2))    # 3
+print(next_prime(3))    # 5
+print(next_prime(13))   # 17
+print(next_prime(181))  # 191
+print(next_prime(911))  # 919
