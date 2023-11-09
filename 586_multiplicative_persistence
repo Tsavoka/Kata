@@ -1,0 +1,46 @@
+# Multiply all the digits of a nonnegative integer n
+# by each other, repeating with the product until a
+# single digit is obtained. The number of steps required
+# is known as the multiplicative persistence.
+# Create a function that calculates the individual results
+# of each step, not including the original number, but
+# including the single digit, and outputs the result as a
+# list/array. If the input is a single digit, return an empty
+# list/array.
+# Examples
+# per(10) = [0]
+# // 1*0 = 0
+# per(69) = [54, 20, 0]
+# // 6*9 = 54 --> 5*4 = 20 --> 2*0 = 0
+
+
+def per(n):
+    if n < 10:
+        return []
+    rez = []
+    while n > 10:
+        n = eval('*'.join(str(n)))
+        rez.append(n)
+    return rez
+
+
+
+
+print(per(9))
+# []
+print(per(1234567890))
+# [0]
+print(per(123456789))
+# [362880, 0]
+print(per(2379))
+# [378, 168, 48, 32, 6]
+print(per(777))
+# [343, 36, 18, 8]
+print(per(25))
+# [10, 0]
+print(per(277777788888899))
+# [4996238671872, 438939648, 4478976, 338688, 27648, 2688, 768,
+# 336, 54, 20, 0]
+print(per(3778888999))
+# [438939648,  4478976,  338688,  27648,  2688,  768,  336,  54,
+# 20,  0]
